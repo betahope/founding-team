@@ -14,6 +14,14 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+### Fixed
+
+- Trimmed `dan/SKILL.md` description to fit Claude.ai's 1024-character limit on the `description` frontmatter field. Was 1382 characters, which caused Claude.ai's skill loader to reject the upload with `field 'description' in SKILL.md must be at most 1024 characters`. The trim collapsed two enumerated sub-lists into compact parentheticals (cap table mechanics; grants and accelerator programs), dropped a few non-trigger details, and preserved all term-sheet vocabulary, program names, and persona credibility that drive triggering.
+
+### Notes
+
+- **Workflow maintenance TODO (before 2026-06-02):** the release workflow at `.github/workflows/release.yml` uses `actions/checkout@v4` and `softprops/action-gh-release@v2`, both currently running on Node.js 20. GitHub Actions will force Node.js 24 as the default starting **2026-06-02** and will remove Node.js 20 from runners on **2026-09-16**. Bump these actions to versions that ship Node.js 24 builds before then, or set `FORCE_JAVASCRIPT_ACTIONS_TO_NODE24=true` on the runner as a temporary opt-in. Background: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+
 ## [0.4.1] - 2026-05-24
 
 ### Fixed
