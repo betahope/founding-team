@@ -1,0 +1,37 @@
+---
+name: cofounder-team-upgrade
+description: "Upgrade the cofounder-team skills to the latest version. Use when the user wants to update or upgrade their cofounder-team skills, get the newest versions of Jack, Maya, Priya, Dan, pitch-deck-coach, startup-application-coach, or humanizer, or asks to run /cofounder-team-upgrade. Triggers include 'upgrade cofounder-team', 'update my cofounder skills', 'pull latest cofounder-team', or running /cofounder-team-upgrade."
+---
+
+# Upgrade the cofounder-team skills
+
+When the user asks to upgrade, do exactly this. Do not edit any files. Only run shell commands.
+
+1. **Set the repo folder.** Default is `~/.cofounder-team`. If that folder does not exist, ask the user where they cloned the repo and use that path instead for the rest of the steps.
+
+2. **Record the current version** so we can show the user what changed:
+   ```
+   git -C ~/.cofounder-team rev-parse HEAD
+   ```
+   Remember this value as `OLD`.
+
+3. **Pull the latest version:**
+   ```
+   git -C ~/.cofounder-team pull
+   ```
+
+4. **Re-run the installer** so any new skills get linked into `~/.claude/skills/`:
+   ```
+   bash ~/.cofounder-team/setup
+   ```
+
+5. **Show what changed since `OLD`:**
+   ```
+   git -C ~/.cofounder-team log --oneline OLD..HEAD
+   ```
+   (Replace `OLD` with the value from step 2.)
+   If there are no new commits, tell the user they are already up to date.
+
+6. **Tell the user to start a new Claude Code session** so the updated skills load.
+
+That is the entire upgrade workflow. Do not run additional commands, do not edit files, do not modify anything outside `~/.cofounder-team` and `~/.claude/skills/`.

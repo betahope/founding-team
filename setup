@@ -1,0 +1,69 @@
+#!/usr/bin/env bash
+# cofounder-team setup — links every skill folder in this repo into ~/.claude/skills/.
+# On macOS and Linux, creates symlinks so future upgrades take effect automatically.
+# On Windows (Git Bash / MSYS), copies the folders because symlinks are often blocked.
+
+set -euo pipefail
+
+# The folder this script lives in = the repo root.
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Where Claude Code looks for personal skills.
+SKILLS_DIR="$HOME/.claude/skills"
+mkdir -p "$SKILLS_DIR"
+
+# Detect Windows-style Bash (Git Bash, MSYS, Cygwin). WSL is treated as Linux.
+USE_COPY=0
+case "${OSTYPE:-}" in
+  msys*|cygwin*|win32*) USE_COPY=1 ;;
+esac
+
+installed=0
+skipped=0
+
+for dir in "$REPO_DIR"/*/; do
+  skill="$(basename "$dir")"
+  [ -f "$dir/SKILL.md" ] || continue        # only folders that are real skills
+
+  target="$SKILLS_DIR/$skill"
+
+  # Safety: do not touch a skill folder that exists but is not one of our links/copies.
+  if [ -e "$target" ] && [ ! -L "$target" ]; then
+    # If it's a directory we previously copied (Windows mode), let us overwrite.
+    # Detect by looking for a sentinel file we drop on copy.
+    if [ -f "$target/.cofounder-team" ]; then
+      rm -rf "$target"
+    else
+      echo "Skipped $skill: a real folder already exists at $target. Move or rename it, then re-run setup."
+      skipped=$((skipped + 1))
+      continue
+    fi
+  fi
+
+  # Remove any existing link from a previous install so we always end with a fresh pointer.
+  rm -f "$target"
+
+  if [ "$USE_COPY" -eq 1 ]; then
+    cp -R "${dir%/}" "$target"
+    # Sentinel so future upgrades can overwrite this copy safely.
+    : > "$target/.cofounder-team"
+    echo "Installed skill (copy): $skill"
+  else
+    ln -s "${dir%/}" "$target"
+    echo "Installed skill: $skill"
+  fi
+
+  installed=$((installed + 1))
+done
+
+echo ""
+echo "Installed $installed skill(s). Skipped $skipped."
+
+if [ "$USE_COPY" -eq 1 ]; then
+  echo ""
+  echo "Windows note: skills were COPIED, not linked. Re-run this setup script after every"
+  echo "upgrade so the latest files land in ~/.claude/skills/."
+fi
+
+echo ""
+echo "Done. Start a new Claude Code session to load the skills."

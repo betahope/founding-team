@@ -1,0 +1,53 @@
+#!/usr/bin/env bash
+# cofounder-team uninstall — removes only the links (or copies) this repo created
+# in ~/.claude/skills/. Never touches unrelated skills.
+
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+SKILLS_DIR="$HOME/.claude/skills"
+
+if [ ! -d "$SKILLS_DIR" ]; then
+  echo "Nothing to do: $SKILLS_DIR does not exist."
+  exit 0
+fi
+
+removed=0
+left=0
+
+for dir in "$REPO_DIR"/*/; do
+  skill="$(basename "$dir")"
+  [ -f "$dir/SKILL.md" ] || continue
+
+  target="$SKILLS_DIR/$skill"
+
+  if [ -L "$target" ]; then
+    # Only remove the symlink if it points back into this repo.
+    link_dest="$(readlink "$target" || true)"
+    case "$link_dest" in
+      "$REPO_DIR"/*)
+        rm -f "$target"
+        echo "Removed link: $skill"
+        removed=$((removed + 1))
+        ;;
+      *)
+        echo "Left in place: $skill (link does not point into this repo)"
+        left=$((left + 1))
+        ;;
+    esac
+  elif [ -d "$target" ] && [ -f "$target/.cofounder-team" ]; then
+    # Windows-mode copy with our sentinel — safe to remove.
+    rm -rf "$target"
+    echo "Removed copy: $skill"
+    removed=$((removed + 1))
+  elif [ -e "$target" ]; then
+    echo "Left in place: $skill (not installed by cofounder-team)"
+    left=$((left + 1))
+  fi
+done
+
+echo ""
+echo "Removed $removed entry/entries. Left $left untouched."
+echo ""
+echo "The repo clone itself was not deleted. To remove it as well, run:"
+echo "  rm -rf $REPO_DIR"
