@@ -25,13 +25,22 @@ When the user asks to upgrade, do exactly this. Do not edit any files. Only run 
    bash ~/.cofounder-team/setup
    ```
 
-5. **Show what changed since `OLD`:**
+5. **Show what changed since `OLD`.** First the curated changelog, then the raw commit log as a fallback.
+
+   Changelog diff (this is the human-readable summary of what shipped):
+   ```
+   git -C ~/.cofounder-team diff OLD..HEAD -- CHANGELOG.md
+   ```
+   If the user was on a version before `CHANGELOG.md` existed (anything older than v0.2.0), the diff will show the whole changelog as added. That is correct: everything in it is new to them.
+
+   Raw commit log (covers anything not captured in the changelog):
    ```
    git -C ~/.cofounder-team log --oneline OLD..HEAD
    ```
-   (Replace `OLD` with the value from step 2.)
+   (Replace `OLD` with the value from step 2 in both commands.)
+
    If there are no new commits, tell the user they are already up to date.
 
-6. **Tell the user to start a new Claude Code session** so the updated skills load.
+6. **Tell the user the new version and to start a new Claude Code session** so the updated skills load. Read the version from `~/.cofounder-team/VERSION` if it exists; otherwise just tell them to restart.
 
 That is the entire upgrade workflow. Do not run additional commands, do not edit files, do not modify anything outside `~/.cofounder-team` and `~/.claude/skills/`.

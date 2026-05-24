@@ -50,6 +50,20 @@ The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: person
 
 When editing skill prose, match the existing voice. In particular: **no em dashes** (this is stated explicitly in the persona skills' "How you talk" sections, and `humanizer` flags em-dash overuse as pattern #14). Use commas, parentheses, or two sentences instead.
 
+## Versioning and CHANGELOG
+
+The bundle uses [Semantic Versioning](https://semver.org/). `VERSION` at the repo root is the source of truth for the current version. `CHANGELOG.md` follows the [Keep a Changelog](https://keepachangelog.com/) format.
+
+What the version numbers mean here:
+
+- **MAJOR** — A skill is removed or renamed, a handoff contract between skills changes in a way that breaks existing usage, or the install/upgrade path changes in a way that requires user action beyond a normal upgrade.
+- **MINOR** — A new skill ships, a new section or capability is added to an existing skill, a persona's scope expands, or any backwards-compatible behavior change. The language-matching contract added in 0.2.0 is a MINOR example.
+- **PATCH** — Typos, wording polish, small clarifications, internal cross-reference fixes, or other changes that do not alter behavior.
+
+Every change goes into the `[Unreleased]` section of `CHANGELOG.md` as it ships. When cutting a release: rename `[Unreleased]` to the new version and date (`[X.Y.Z] - YYYY-MM-DD`), insert a fresh empty `[Unreleased]` at the top, bump `VERSION`, commit, then `git tag vX.Y.Z` and `git push --tags`.
+
+The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it predates the bundle. That number is informational; the bundle version is authoritative for upgrade decisions. Do not propagate per-skill versions to the other SKILL.md files.
+
 ## The upgrade skill
 
-`cofounder-team-upgrade/SKILL.md` is itself a runbook: `git -C ~/.cofounder-team rev-parse HEAD` (save as OLD) → `git pull` → `bash setup` → `git log OLD..HEAD`. Do not add steps that edit files or touch anything outside `~/.cofounder-team` and `~/.claude/skills/`.
+`cofounder-team-upgrade/SKILL.md` is itself a runbook: `git -C ~/.cofounder-team rev-parse HEAD` (save as OLD) → `git pull` → `bash setup` → `git diff OLD..HEAD -- CHANGELOG.md` → `git log OLD..HEAD`. Do not add steps that edit files or touch anything outside `~/.cofounder-team` and `~/.claude/skills/`.
