@@ -44,7 +44,7 @@ jobs:
           echo "Building release for tag: $TAG"
 
       - name: Check out the repo at the tag
-        uses: actions/checkout@v4
+        uses: actions/checkout@v6
         with:
           ref: ${{ steps.tag.outputs.tag }}
 
@@ -109,7 +109,7 @@ jobs:
           cat release-notes.md
 
       - name: Create or update the GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: ${{ steps.tag.outputs.tag }}

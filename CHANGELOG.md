@@ -14,6 +14,10 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped release workflow actions to Node 24 compatible majors: `actions/checkout@v4` → `@v6`, and `softprops/action-gh-release@v2` → `@v3`. Resolves the deprecation warning flagged in the v0.4.2 notes ahead of GitHub's 2026-06-02 Node 24 default and 2026-09-16 Node 20 removal deadlines. No change to the produced release zips or to either action's input surface.
+
 ## [0.5.0] - 2026-05-25
 
 ### Added
