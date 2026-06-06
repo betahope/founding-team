@@ -14,6 +14,8 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+## [0.6.1] - 2026-06-06
+
 ### Changed
 
 - Added a "How the team works together" section to `README.md` that makes the team contract explicit at the front door: each co-founder knows the others, knows the edge of its own expertise, and pulls in the right person instead of guessing or bluffing. The behavior was already encoded in every persona's Boundaries section and in the Claude.ai project template; this surfaces it in the README, which previously only hinted at it in one line. Docs only, no skill behavior change.
