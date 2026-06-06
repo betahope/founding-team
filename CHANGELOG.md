@@ -14,6 +14,8 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+## [0.7.0] - 2026-06-06
+
 ### Added
 
 - A "Credits" section in `README.md` attributing the bundle to Charles Hope at Your Startup Advisor, crediting Kevin Hale for the pitch-deck design guidance and Paul Graham, Dalton Caldwell, Andres Barreto, and a16z Speedrun for the application guidance, and crediting the bundled `humanizer` skill to blader ([github.com/blader/humanizer](https://github.com/blader/humanizer), MIT License) and its underlying Wikipedia "Signs of AI writing" source. Docs only, no skill behavior change.
