@@ -2,9 +2,15 @@
 
 A set of portable Claude Code skills that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
 
-The skills know about each other. When the conversation moves outside their lane, they hand off cleanly.
+They work as a team, not as four tools you switch between. More on that below.
 
 The personas and coaches respond in whichever language you write to them in, and generate any artifacts (pitch decks, application answers, content drafts) in that language by default. You can override per-artifact ("draft this in English"). The `humanizer` stays English-only and is automatically skipped on non-English drafts.
+
+## How the team works together
+
+These four are a team, not four separate advisors. Each co-founder knows the others by name and domain, knows where its own expertise ends, and pulls in whoever is needed rather than guessing outside its lane. Ask Jack something that turns on product design and he brings Maya in. Raise a fundraising angle mid-conversation and Dan steps up. When someone hits the edge of what they know, they say so and point you to the right co-founder instead of bluffing.
+
+This is built into the skills, not bolted on. Every persona carries a Boundaries section that names the others and spells out when to hand off, so the team stays in its lanes without you having to direct traffic. On Claude.ai, the project instructions template takes it further: the co-founders weigh in together inside a single reply, each voice attributed by name.
 
 ## Install
 
