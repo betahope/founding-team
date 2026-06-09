@@ -199,10 +199,19 @@ Each section in the reference file has: what the question is really asking, what
 The core principles above apply to every program. When a founder names a specific program, the skill should also pull in program-specific guidance from `references/program-specific.md`. Currently covers:
 
 - **Y Combinator**: what YC readers look for in the first 20 seconds, the weight placed on technical talent, the importance of the "impressive achievement" question, the wildcard question, how interviews work, the reapply-after-feedback loop
-- **Techstars**: the emphasis on bottom-up TAM, the structure of the target audience question, the specific framing of the "why now" and "customer acquisition" questions
+- **Techstars**: the emphasis on bottom-up TAM, the structure of the target audience question, the specific framing of the "why now" and "customer acquisition" questions, the hard per-question character limits the form enforces, and the fact that revenue and funding are structured fields rather than prose
 - **a16z Speedrun**: cofounder history as a signal, the velocity and traction-quality hierarchy, earned insight over obvious opportunity, idea-maze depth, company-building beyond the product, and what the interview rewards
 
 Do not invent program-specific guidance for programs not covered in the reference file. If a founder asks about a program we do not have notes on, apply the general principles and say that program-specific patterns for that one are not in the skill.
+
+## Deep-dive references for the two hardest questions
+
+Two questions sink more applications than the rest: market size and competitive advantage. The question-by-question guide covers both, but each has a dedicated reference for when a founder is stuck or leaning on a weak answer. These apply to any program, not just the ones with program-specific notes.
+
+- **Market size.** When a founder is on the "how much could you make?" question, struggling to build a bottom-up TAM, segmenting buyers, or unable to source a buyer count, read `references/bottom-up-tam.md`.
+- **Competitive advantage.** When a founder is leaning on a false moat ("proprietary data," "AI," "first-mover"), has no obvious defensibility, or wants help finding a real one, read `references/moats.md`.
+
+**Offer to research the hard numbers.** On both of these questions, the inputs that make or break the answer are researchable: the buyer count and price for TAM, the customer's workflow chokepoints for the moat. When a founder reaches either question, offer to research it for them with a web search, then build the answer from cited figures they can correct. Do this only when web search is available in the current environment; if it is not, say so and work from the founder's own knowledge. The exact offers and search approach are in the two reference files. Never invent a figure or a moat to fill a gap. The founder owns the final numbers.
 
 ---
 
@@ -261,6 +270,23 @@ When the founder does not give you enough to draft with, or explicitly asks for 
 4. Do not fill in the gaps yourself. If the founder does not know a number or cannot name a customer, name the gap openly. Hallucinated content is worse than a visibly incomplete answer because programs check claims.
 5. If you do move into drafting based on what they shared, run the draft through the quick checklist at the bottom of this skill before presenting it.
 6. When you move into drafting or structuring, remind the founder to review the output rather than use it as-is. Their judgement on what is true and what sounds like them matters more than yours.
+
+---
+
+## Assembling the full application
+
+Once a founder has several answers in good shape, offer to assemble them into a single document they can work from and submit. This is a finishing step, not a mode. Offer it when the founder has most of their answers drafted, or earlier if they ask.
+
+The deliverable is a **Markdown document**, nothing else. Markdown works the same wherever this skill runs, and the founder can copy it into a Google Doc, paste each answer straight into the application portal, or save it as a file themselves. Do not try to produce a `.docx`, a Google Doc, or any other file format. Do not depend on file-creation tools or environment-specific paths. One Markdown document in your response is the whole deliverable.
+
+Structure it like this:
+
+- A short header: company name and date.
+- Each question as a heading, in the order the program lists them, with the finished answer beneath it.
+- When the program enforces a character limit on a question (Techstars does; see `references/program-specific.md`), show the count next to the answer, for example `382 / 400`, so the founder can confirm each one fits before pasting. When there is no known limit, omit the count.
+- For Techstars, remember revenue and funding are structured fields, not prose (see `references/program-specific.md`), so note that those go into the form's tables rather than appearing as written answers.
+
+Before assembling, run any answer you drafted or rewrote through the quick checklist at the bottom of this skill, and through the `humanizer` skill if the application is in English (skip humanizer for non-English drafts, as described in the Language section). Then end with the usual reminder: the founder should read the whole thing once more, check every claim is accurate, and share it with co-founders, mentors, or advisors before submitting.
 
 ---
 

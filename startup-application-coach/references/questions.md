@@ -135,6 +135,8 @@ This is compatible with the inverted-pyramid guidance in `SKILL.md`: lead with t
 
 **Strong:** "We charge a $1,200 annual subscription. With 749,404 restaurants in the US, we can reach $749M in annual revenue in the US. With 1.5 million restaurants in Europe, we can generate $1.8B per year in Europe."
 
+Founders fail this question more than any other. For the full method (defining and counting the buyer from real data, segmenting buyers that pay differently, sanity-checking against a top-down figure) and the option to research the buyer count and price via web search, read `references/bottom-up-tam.md`.
+
 ---
 
 ## Who is your target audience?
@@ -208,6 +210,8 @@ The more specific, the better. This is your Ideal Customer Profile.
 - What is hard for a competitor to replicate?
 - Why will you beat the natural monopolies in this space?
 - Fill in the blank: "We are the only company in the world that _____ for our customers."
+
+**Most early software startups have no durable moat on day one, and that is normal.** Real technology moats mostly live in hardware, deeptech, and techbio. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." This is where software founders bluff hardest. For the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints, read `references/moats.md`.
 
 ---
 

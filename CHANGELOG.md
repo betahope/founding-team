@@ -14,6 +14,20 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+### Added
+
+- `startup-application-coach` gained depth on the two questions that sink the most applications, plus a portable assemble step. Adapted from Andres Barreto's published Techstars Application Guide and his Techstars-only skill, generalised to apply across programs and matched to this bundle's voice. The coach stays multi-program (YC, Techstars, a16z Speedrun); this enriches it rather than narrowing it.
+  - **`references/bottom-up-tam.md`** — the full bottom-up TAM method (define and count the buyer from real data, set a realistic ACV, segment buyers that pay differently, multiply, sanity-check against a top-down figure), a worked example, the common fatal mistakes, and an optional offer to research the buyer count and price via web search when the environment supports it.
+  - **`references/moats.md`** — honest competitive-advantage coaching: the data-moat fallacy and how to pressure-test it, the real durable defensibilities, the chokepoint and workflow-embedding lens for early software, killing the three false moats ("proprietary data," "AI," "first-mover"), and an optional offer to research the customer's workflow chokepoints.
+  - **Techstars character limits and structured fields** in `references/program-specific.md` — the per-question character caps the form enforces, and the note that revenue and funding are entered as structured tables rather than prose (so the traction box is for non-revenue signal).
+  - **A Markdown assemble step** in `SKILL.md` — once answers are in good shape, the coach can assemble them into a single Markdown document (company header, each question as a heading with its answer, a character count next to each answer where the program enforces a limit). Markdown is the only output format, chosen because it works identically in Claude Code and Claude.ai and the founder can copy it into a doc, a file, or the portal themselves.
+  - **An offer to research the hard numbers** — on the market-size and competitive-advantage questions, the coach offers to web-research the inputs (buyer count and price; customer chokepoints) and build the answer from cited figures the founder can correct, degrading gracefully when web search is unavailable.
+  - Cross-references added in `questions.md` and `program-specific.md` pointing to the two new reference files at the relevant questions.
+
+### Changed
+
+- Optimised the `README.md` Credits section. Consolidated to one paragraph per skill (the `pitch-deck-coach` and `startup-application-coach` were each described twice with overlapping content), and added a direct link to Andres Barreto's open-source skill repository at [github.com/andresbarreto-techstars/techstars-application-coach-skill](https://github.com/andresbarreto-techstars/techstars-application-coach-skill) to credit the source of the new bottom-up TAM, moat, and Techstars-specific material.
+
 ## [0.7.0] - 2026-06-06
 
 ### Added

@@ -100,9 +100,35 @@ Techstars applications ask more structured questions with longer, more explicit 
 
 Follow the structure Techstars asks for. If they ask for three categories of competitor, give them three categories.
 
+### Character limits are hard, and the form enforces them
+
+Every Techstars answer goes into a capped text box. The single most common mechanical failure is an answer that does not fit. Write to the limit. A strong answer uses most of it without padding. When you draft or critique any Techstars answer, check it against the cap below.
+
+| Question | Limit |
+|---|---|
+| Problem | 500 |
+| Product / solution | 500 |
+| Team (why a winning team) | 1000 |
+| Traction metrics (free text) | 280 |
+| How you make money + market size | 400 |
+| Target audience | 400 |
+| Competitors | 400 |
+| Competitive advantage | 400 |
+| Why now | 400 |
+| Customer acquisition | 400 |
+| Milestones | 400 |
+
+These caps are specific to the current Techstars form. If the form has changed, the founder should trust what the portal shows over this table. When an answer is over its cap, cut filler first, then the least important fact. Never shrink the key number or the proof.
+
+### Revenue and funding are structured fields, not prose
+
+Techstars enters revenue as a month-by-month dollar table (last six months) and funding by source (Friends and Family, Grant, Angel, Venture Capital, Other). So the 280-character traction box is for non-revenue signal: users, LOIs, pipeline, growth rate. Do not waste it restating revenue numbers that belong in the table.
+
+This also means the deep answers (the bottom-up TAM, the moat reasoning) are the founder's working analysis. The pasted answer is compressed to its cap. Build the full logic, then distil to the headline numbers and the one-line "why."
+
 ### Specific Techstars emphases
 
-**Bottom-up TAM is required.** Techstars specifically asks "how much money could you make?" and expects a bottom-up calculation: ACV × number of potential customers. Top-down market size claims ("the global X market is $Y billion") will not satisfy the question.
+**Bottom-up TAM is required.** Techstars specifically asks "how much money could you make?" and expects a bottom-up calculation: ACV × number of potential customers. Top-down market size claims ("the global X market is $Y billion") will not satisfy the question. This is the question founders fail most often. For the full method (segmenting buyers, sourcing the buyer count, sanity-checking) and the option to research the buyer count and price via web search, read `references/bottom-up-tam.md`.
 
 **Target audience: be specific about the decision-maker.** Techstars wants to see the persona who has the problem, knows they have it, has quantified it, and will do something about it. "Fitness centers" is wrong. "The 60 COOs of YMCA Metro Groups who control 1,000 facilities" is right.
 
@@ -121,6 +147,8 @@ Techstars gives you explicit prompts to work with on the competitive advantage q
 - Fill in the blank: "We are the only company in the world that _____ for our customers."
 
 These are genuinely useful prompts. Use them to stress-test your answer.
+
+Most early software startups do not have a durable moat on day one, and that is normal. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." For the modern view (the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints), read `references/moats.md`.
 
 ### Milestones: next features or next learnings
 
