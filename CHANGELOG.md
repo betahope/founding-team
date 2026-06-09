@@ -14,6 +14,8 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+## [0.8.0] - 2026-06-09
+
 ### Added
 
 - `startup-application-coach` gained depth on the two questions that sink the most applications, plus a portable assemble step. Adapted from Andres Barreto's published Techstars Application Guide and his Techstars-only skill, generalised to apply across programs and matched to this bundle's voice. The coach stays multi-program (YC, Techstars, a16z Speedrun); this enriches it rather than narrowing it.
