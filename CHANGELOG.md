@@ -14,6 +14,12 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+## [0.8.1] - 2026-06-17
+
+### Changed
+
+- Polished wording in `claude-ai-project-instructions-template.md` and restructured its "Quick Context" section into explicit per-line prompts (the problem, who the customers are, the proposed solution, where the team is based) so founders filling out the template know exactly what to write in each line.
+
 ## [0.8.0] - 2026-06-09
 
 ### Added
