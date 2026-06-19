@@ -14,6 +14,10 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+### Changed
+
+- Rebranded the bundle's user-facing name to **The Founding Team**. The README heading and tagline now read "The Founding Team / Your AI founding team, inside Claude." The GitHub repository was renamed from `cofounder-team` to `founding-team`; the clone and release links in the README point at the new URL (GitHub redirects the old one, so existing clones keep pulling). Internal names users depend on are unchanged: the local clone folder stays `~/.cofounder-team`, the upgrade command stays `/cofounder-team-upgrade`, and the Windows `.cofounder-team` sentinel is untouched, so existing installs upgrade with zero action needed.
+
 ## [0.8.1] - 2026-06-17
 
 ### Changed

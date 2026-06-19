@@ -1,4 +1,6 @@
-# cofounder-team
+# The Founding Team
+
+*Your AI founding team, inside Claude.*
 
 A set of portable Claude Code skills that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
 
@@ -21,7 +23,7 @@ Two paths, pick the one that matches where you use Claude.
 Works on macOS, Linux, and Windows. Open a terminal and run:
 
 ```
-git clone --depth 1 https://github.com/betahope/cofounder-team.git ~/.cofounder-team && cd ~/.cofounder-team && bash ./setup
+git clone --depth 1 https://github.com/betahope/founding-team.git ~/.cofounder-team && cd ~/.cofounder-team && bash ./setup
 ```
 
 That command does three things: it clones this repo to `~/.cofounder-team`, then links each skill into `~/.claude/skills/` (where Claude Code looks for personal skills), then prints a summary.
@@ -34,7 +36,7 @@ After it finishes, **start a new Claude Code session** so the skills load.
 
 Works on any OS, no terminal needed.
 
-1. Go to the [latest release](https://github.com/betahope/cofounder-team/releases/latest).
+1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest).
 2. Download the `.zip` for each skill you want (jack, maya, priya, dan, pitch-deck-coach, startup-application-coach, humanizer).
 3. In Claude.ai, open **Customize → Skills** from the left sidebar, click **Upload**, and drop each zip in.
 
@@ -75,7 +77,7 @@ Inside any Claude Code session, run:
 
 Claude.ai has no in-app upgrade flow for personal skills. To get the newest version:
 
-1. Go to the [latest release](https://github.com/betahope/cofounder-team/releases/latest) and check the version number against what you have installed.
+1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest) and check the version number against what you have installed.
 2. Download the updated zips and re-upload them in **Customize → Skills** (in the left sidebar). Claude.ai will replace the existing skill of the same name.
 3. The release notes on each release list what changed, pulled from `CHANGELOG.md`.
 
