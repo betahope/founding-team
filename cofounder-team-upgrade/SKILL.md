@@ -20,10 +20,11 @@ When the user asks to upgrade, do exactly this. Do not edit any files. Only run 
    git -C ~/.cofounder-team pull
    ```
 
-4. **Re-run the installer** so any new skills get linked into `~/.claude/skills/`:
+4. **Re-run the installer** so the skills are rebuilt and linked into `~/.claude/skills/`:
    ```
    bash ~/.cofounder-team/setup
    ```
+   `setup` now compiles the source into the finished skills first (a plain-bash build, no extra tools to install), then links the Claude Code build. The build runs automatically as part of `setup`; there is no separate command. This is why an upgrade always re-links: it repoints each skill in `~/.claude/skills/` at the freshly built version, even for users who installed before the build step existed.
 
 5. **Show what changed since `OLD`.** First the curated changelog, then the raw commit log as a fallback.
 

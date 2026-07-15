@@ -14,7 +14,9 @@ Work directly on `main`. All commits and pushes go to `main` — do not create f
 
 ## What this repo is
 
-A bundle of portable Claude Code skills. There is no application, no build, no test suite, no lint. Every "deliverable" is a `SKILL.md` (plus optional `references/`) that Claude Code loads at session start.
+A bundle of portable Claude Code skills. There is no application, no test suite, no lint. Every "deliverable" is a `SKILL.md` (plus optional `references/`) that Claude Code loads at session start.
+
+There is one small build step. The source `SKILL.md` files use a few templating directives, and `build` (plain bash, no dependencies) compiles them into two finished flavors under `dist/`. See "The build system" below. `setup` runs the build for you, so the day-to-day loop is still just "clone and run setup."
 
 ## Repo layout
 
@@ -25,24 +27,52 @@ Each top-level directory containing a `SKILL.md` is a skill:
 - `humanizer` — called by the other skills before they return user-facing copy
 - `cofounder-team-upgrade` — runs the upgrade workflow
 
-`setup` and `uninstall` are bash scripts. `setup` walks every top-level dir that contains a `SKILL.md` and links it into `~/.claude/skills/` (or copies it on Windows / Git Bash, leaving a `.cofounder-team` sentinel file).
+Supporting pieces:
+
+- `build` — bash script that compiles source skills into `dist/claude-code/` and `dist/claude-ai/`.
+- `shared/` — snippets included by more than one skill (for example `shared/persona/` holds the co-founder intro, humanizer steps, and non-English rule the four personas share). Not a skill.
+- `hooks/` — optional, opt-in Claude Code hooks (currently `humanizer-slop-check`). Not a skill, not installed by `setup`, absent on Claude.ai.
+- `dist/` — build output. Git-ignored. Never edit by hand; rebuild instead.
+
+`setup` and `uninstall` are bash scripts. `setup` runs `build`, then links every skill in `dist/claude-code/` into `~/.claude/skills/` (or copies it on Windows / Git Bash, leaving a `.cofounder-team` sentinel file). `uninstall` removes only the links or copies this repo created.
 
 ## Distribution channels
 
 The bundle ships through two channels that work very differently. Both are equally supported.
 
-**Claude Code (local install).** Users `git clone` this repo to `~/.cofounder-team` and run `bash ./setup`. On macOS and Linux, `~/.claude/skills/<name>` becomes a **symlink** back into this repo, so editing a `SKILL.md` here changes the live installed skill immediately (user still has to start a new Claude Code session for the loader to pick it up). On Windows, entries are copies, so changes here do **not** reach the installed skill until `bash ./setup` (or `/cofounder-team-upgrade`) is re-run.
+**Claude Code (local install).** Users `git clone` this repo to `~/.cofounder-team` and run `bash ./setup`. `setup` builds the skills, then on macOS and Linux makes `~/.claude/skills/<name>` a **symlink** into `dist/claude-code/<name>`. Because the installed skill points at the build, editing a source `SKILL.md` does **not** change the live skill until you rebuild (run `bash ./build`, or just `bash ./setup` again) and start a new Claude Code session. On Windows, entries are copies, so changes never reach the installed skill until `bash ./setup` (or `/cofounder-team-upgrade`) is re-run. The installed Claude Code skill is the `claude-code` flavor, so it carries the Claude-Code-only extras (the coach memory sections, the humanizer hook note).
 
-**Claude.ai (release zips).** Every `v*` tag push triggers `.github/workflows/release.yml`, which builds one `.zip` per skill and attaches them to a GitHub Release. Users download the zips and upload them via Claude.ai's **Customize → Skills** UI (in the left sidebar). There is no in-app upgrade path on Claude.ai; users re-download newer zips and re-upload to update. Note: Skills on Claude.ai live under Customize in the sidebar, not under Settings — easy to get wrong when writing docs.
+**Claude.ai (release zips).** Every `v*` tag push triggers `.github/workflows/release.yml`, which runs `build` and attaches one `.zip` per skill (the `claude-ai` flavor) to a GitHub Release. Users download the zips and upload them via Claude.ai's **Customize → Skills** UI (in the left sidebar). There is no in-app upgrade path on Claude.ai; users re-download newer zips and re-upload to update. Note: Skills on Claude.ai live under Customize in the sidebar, not under Settings — easy to get wrong when writing docs. The `claude-ai` flavor omits everything that only works in Claude Code, so the website version is always safe words-and-references only.
 
-The release workflow auto-discovers skills by scanning top-level directories that contain a `SKILL.md`. It excludes any skill listed in the workflow's `EXCLUDED_SKILLS` env var. Currently only `cofounder-team-upgrade` is excluded (it touches local filesystem paths that do not exist on Claude.ai).
+The release workflow discovers skills by scanning `dist/claude-ai/` after the build. It excludes any skill listed in the workflow's `EXCLUDED_SKILLS` env var. Currently only `cofounder-team-upgrade` is excluded (it touches local filesystem paths that do not exist on Claude.ai).
 
 The Claude.ai distribution starts at v0.3.0. Earlier tags (v0.1.0, v0.2.0) only ship through the Claude Code install path.
 
+## The build system
+
+One source, two builds. The same skill ships to Claude Code (which can run hooks, save memory files, and more) and to Claude.ai (which can only read the skill text and its bundled references). So `build` compiles each source `SKILL.md` into two flavors:
+
+- `dist/claude-code/<skill>/` — the full version, including Claude-Code-only extras.
+- `dist/claude-ai/<skill>/` — the safe version: words and reference notes only, nothing that needs a running program.
+
+`build` is plain bash and needs nothing installed (it runs on macOS's bash 3.2). It reads these directives in a source `SKILL.md` and in shared snippets:
+
+- `{{include: shared/persona/foo.md}}` — insert another file here (also processed). Path is relative to the repo root. Must be alone on its line.
+- `{{set:NAME=value}}` — define a variable (the line is removed from output). Read from the source `SKILL.md` only.
+- `{{var:NAME}}` — replaced by the value set above.
+- `{{FLAVOR:claude-code}} ... {{/FLAVOR}}` — keep this block only in the Claude Code build.
+- `{{FLAVOR:claude-ai}} ... {{/FLAVOR}}` — keep this block only in the Claude.ai build.
+
+A source file with no directives is copied through unchanged, so most edits need no knowledge of the build at all.
+
+**Golden rule: never break the Claude.ai build.** Anything that needs a hook, a helper agent, a script, or persistent memory is Claude Code only. Put it inside a `{{FLAVOR:claude-code}}` block so the website build never sees it. Universal, words-only improvements need no flavor wrapper.
+
+After any change to a source skill or a shared snippet, run `bash ./build` and confirm no `{{` directives leak into `dist/` (`grep -rn "{{" dist/` should be empty except in intended literal cases). `setup` runs the build automatically.
+
 ## Adding a new skill
 
-1. Create `<skill-name>/SKILL.md` at the repo root with valid frontmatter (`name`, `description`, optionally `version`, `license`, `allowed-tools`).
-2. Run `bash ./setup` to link it into `~/.claude/skills/`.
+1. Create `<skill-name>/SKILL.md` at the repo root with valid frontmatter (`name`, `description`, optionally `version`, `license`, `allowed-tools`). You can use the build directives (includes, flavor blocks) if useful, but a plain `SKILL.md` with no directives works too.
+2. Run `bash ./setup` to build and link it into `~/.claude/skills/`.
 3. Update `README.md`'s "The skills" list (and the "Install in Claude.ai" step list if the skill should ship to Claude.ai too).
 4. If other skills should hand off to it, add it to their **Companion skills** / **Boundaries** sections.
 5. Decide whether the skill should ship to Claude.ai. If it touches local filesystem paths, machine-specific state, or anything else that does not exist on Claude.ai, add it to `EXCLUDED_SKILLS` in `.github/workflows/release.yml`. Otherwise no workflow change is needed — auto-discovery picks it up on the next tagged release.
@@ -54,10 +84,10 @@ The Claude.ai distribution starts at v0.3.0. Earlier tags (v0.1.0, v0.2.0) only 
 These skills are designed as a team that knows its own lanes. When editing any persona skill, keep three contracts intact:
 
 1. **Lane boundaries are mutual.** If `jack/SKILL.md` says "visual content sits with Priya" then `priya/SKILL.md` must own that lane. Boundaries described in one skill's "Boundaries" section should be reflected in the other skill's domain. Changing a lane in one place is a multi-file edit.
-2. **`humanizer` is called by the others.** Jack, Maya, Priya, Dan, and the two coaches all instruct themselves to run drafts through the `humanizer` skill before returning user-facing copy. If you change humanizer's name, location, or invocation pattern, update every caller.
+2. **`humanizer` is called by the others.** Jack, Maya, Priya, Dan, and the two coaches all instruct themselves to run drafts through the `humanizer` skill before returning user-facing copy. If you change humanizer's name, location, or invocation pattern, update every caller. The four personas now share the humanizer workflow steps and the non-English rule from `shared/persona/humanizer-steps.md` and `shared/persona/humanizer-non-english.md`, so editing those two snippets updates all four personas at once. The two coaches keep their own inline copies (their structure differs), so they still need separate edits.
 3. **Language follows the user.** All persona and coach skills detect the founder's language from their messages and respond in that language. Generated artifacts (pitch decks, application answers, content drafts, financial model narratives) are produced in the same language unless the founder explicitly asks for a different language for a specific artifact ("make the deck in English"). Per-artifact overrides do not change the conversational language. Persona names (Jack, Maya, Priya, Dan) stay as-is. `humanizer` is English-only, so non-English drafts skip the humanizer pass and say so briefly. If you add a new persona or coach, it must follow this contract too.
 
-The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: persona intro → "How you think" → "Your domain" → "Boundaries" (which names the other co-founders by full name and explicitly hands work off) → "Companion skills" → "How you talk" → "Generating copy: mandatory humanizer pass" → "Context". Preserve this shape when editing — it's how the hand-offs stay reliable.
+The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: persona intro → "How you think" → "Your domain" → "Boundaries" (which names the other co-founders by full name and explicitly hands work off) → "Companion skills" → "How you talk" → "Generating copy: mandatory humanizer pass" → "Context". Preserve this shape when editing — it's how the hand-offs stay reliable. A few of these blocks are now `{{include}}` directives resolved at build time (the co-founder intro, the humanizer steps, the non-English rule); the rendered shape is unchanged.
 
 ## Style rules baked into the skills themselves
 

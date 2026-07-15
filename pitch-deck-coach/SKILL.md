@@ -228,7 +228,7 @@ For more on vision placement and writing, see `references/vision.md`.
 
 The skill does not produce the design (the founder does), but plan-mode and critique-mode output should reflect a few non-negotiable design principles:
 
-- **Use the founder's brand colours.** No rainbow palettes. Two or three brand colours, used consistently. If the founder does not have brand colours yet, suggest a simple palette of two colours plus black and white.
+- **Use the founder's brand colours.** No rainbow palettes. Two or three brand colours, used consistently. If the founder does not have brand colours yet, generate two or three genuinely different palette options (each two colours plus black and white), say in one line what mood each sets, and let the founder pick. Do not hand them a single default; give them real alternatives to choose between.
 - **No animations.** Nobody is asking for slide transitions, fly-ins, or motion effects. They distract from the content and break the flow when pitching.
 - **Keep typography simple.** One or two fonts, used consistently. Body text large enough to read from the back of a room (minimum 24pt for live pitch).
 - **Whitespace matters.** A slide with one strong line and lots of whitespace beats a slide stuffed with bullets.
@@ -281,7 +281,7 @@ When the founder shares a deck and asks for feedback:
 3. **Point out specific problems with concrete examples from the deck.** Do not be vague. "This slide is unclear" is not useful; "the title on slide 3 is a question, not a statement, so the reader does not know what to take from it" is.
 4. **Flag every unverifiable claim.** If the deck contains specific numbers, customer names, team credentials, or dates you cannot verify, name them and ask the founder to confirm before suggesting rewrites.
 5. **Suggest concrete rewrites for the weakest slides** in the slide-by-slide output format. Give the founder something to react to.
-6. **Run every rewrite through the `humanizer` skill.** This is a required step, not an afterthought. Drafted slide content that has not been humanized should not be presented to the founder. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. **Exception:** if the deck is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the rewrites.
+6. **Run every rewrite through the `humanizer` skill.** This is a required step, not an afterthought. Drafted slide content that has not been humanized should not be presented to the founder. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. **Show your work:** when you present humanized slide copy, name in one short line the AI tells you found and fixed (for example: "Cleaned up: one em dash, one rule-of-three."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the deck is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the rewrites.
 
 When critiquing the vision line itself, check that it is:
 
@@ -381,6 +381,27 @@ The goal is not the perfect deck. The goal is a deck that gets the founder the n
 
 ---
 
+{{FLAVOR:claude-code}}
+## Remembering a deck across sessions
+
+Founders come back to the same deck days apart. Do not make them re-explain the last round. Keep a small memory file so the next session picks up where this one left off.
+
+Where: `./.cofounder-team/pitch-deck/<slug>.md` in the founder's project. Build `<slug>` from the deck's source file name when there is one, so a teammate pointing at the same deck inherits the same memory. When the deck lives only in chat or a link, build the slug from the company and audience.
+
+After a critique, or after any round of changes, write or update the snapshot with:
+
+- Date, audience, and format (live or emailed).
+- The one-line takeaway you read off the deck.
+- The P0 issues (the pass/fail signals that get a deck rejected) and P1 issues (things that weaken it), in the shortest form that still makes sense.
+- What changed since the last snapshot, if there was one.
+
+At the start of any deck session, look for an existing snapshot for this deck and read it first. Open by telling the founder what you remember ("Last time the P0 was a missing vision slide and the takeaway was unclear. Did that change?") rather than starting cold. If the founder says the deck has moved on, update the snapshot. Do not argue with them using stale notes.
+
+Keep the file short. It is a memory aid, not a report.
+
+---
+
+{{/FLAVOR}}
 ## Quick checklist before any deck or slide is finalised
 
 Run every deck (or any slide produced by this skill) through this before calling it done:
@@ -396,5 +417,6 @@ Run every deck (or any slide produced by this skill) through this before calling
 - Does the design respect brand colours, no animations, simple typography, readable charts?
 - For live decks: is one founder presenting the whole thing, not swapping slide by slide?
 - Is the ask slide present (if the audience is investors or a program) and specific?
+- For English decks: did you run every drafted or rewritten slide through the humanizer pass and name, in one line, the tells you fixed?
 
 If the answer is no to any of these, revise before the deck goes out.

@@ -1,12 +1,22 @@
 #!/usr/bin/env bash
-# cofounder-team setup — links every skill folder in this repo into ~/.claude/skills/.
-# On macOS and Linux, creates symlinks so future upgrades take effect automatically.
+# cofounder-team setup — builds the skills, then links the Claude Code build into
+# ~/.claude/skills/.
+# On macOS and Linux, creates symlinks so future upgrades take effect after a rebuild.
 # On Windows (Git Bash / MSYS), copies the folders because symlinks are often blocked.
 
 set -euo pipefail
 
 # The folder this script lives in = the repo root.
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+
+# Turn the source skills into finished, installable skills. This produces the
+# Claude Code build under dist/claude-code/ (and the Claude.ai build we ship as
+# release zips). Plain bash, no extra tools needed.
+bash "$REPO_DIR/build"
+echo ""
+
+# We install the Claude Code build, not the raw source.
+BUILD_DIR="$REPO_DIR/dist/claude-code"
 
 # Where Claude Code looks for personal skills.
 SKILLS_DIR="$HOME/.claude/skills"
@@ -21,7 +31,7 @@ esac
 installed=0
 skipped=0
 
-for dir in "$REPO_DIR"/*/; do
+for dir in "$BUILD_DIR"/*/; do
   skill="$(basename "$dir")"
   [ -f "$dir/SKILL.md" ] || continue        # only folders that are real skills
 

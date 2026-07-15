@@ -14,6 +14,22 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+Turns the bundle from single-source prose into a source that compiles into two builds, and lands four skill improvements drawn from Paul Bakaus's "The Dark Arts of Skill Engineering." The install and upgrade flow is unchanged for users: still "clone and run setup," and an upgrade still needs no extra action.
+
+### Added
+
+- **A build step (`build`).** Plain bash, no dependencies, runs on macOS's bash 3.2. It compiles each source `SKILL.md` into two flavors: `dist/claude-code/` (the full version, with the Claude-Code-only extras) and `dist/claude-ai/` (a safe, words-and-references-only version for the website). `setup` runs it automatically before linking, and the release workflow runs it before zipping. Supports `{{include}}`, `{{set}}`/`{{var:}}`, and `{{FLAVOR:...}}` directives. This is what lets local-only features ship to Claude Code without ever reaching (or breaking) the Claude.ai build. See "The build system" in `CLAUDE.md`.
+- **Shared persona snippets (`shared/persona/`).** The four personas (Jack, Maya, Priya, Dan) now share the co-founder intro, the humanizer workflow steps, and the non-English rule from single files instead of four copies each. Editing the humanizer contract for all four personas is now a one-file change.
+- **A "show your work" step in the humanizer pass.** Across all four personas and both coaches, the mandatory humanizer pass now requires naming, in one short line, the AI tells that were found and fixed (or stating none were). That one line is the proof the pass actually ran, which makes the gate much harder for a weaker model to silently skip. Reinforced by a matching item in each coach's final checklist.
+- **An optional Claude Code hook (`hooks/humanizer-slop-check/`).** Opt-in, off by default, never installed by `setup`. When a user turns it on, it scans text files after they are written for obvious AI tells and nudges Claude to run the humanizer. It is a heuristic backstop for the case where nobody invoked the humanizer at all. Claude Code only; absent on Claude.ai. See `hooks/README.md`.
+- **Cross-session memory for the two coaches (Claude Code only).** `pitch-deck-coach` and `startup-application-coach` now keep a short snapshot per deck or application under `./.cofounder-team/` so a later session picks up where the last left off (the score, the open issues, the standout fact) instead of starting cold. Wrapped in a `{{FLAVOR:claude-code}}` block, so the Claude.ai build does not carry a feature the website cannot support.
+
+### Changed
+
+- **Creative guidance shifts from bans to divergence.** Priya gains a "diverge before you narrow" principle: for creative work, generate several genuinely different options and keep the most distinct, rather than only avoiding the obvious. The pitch-deck palette guidance now offers the founder two or three distinct palette options instead of one default.
+- **`setup`, `uninstall`, the release workflow, and `cofounder-team-upgrade`** all now work through the build. `setup` builds then links `dist/claude-code/`; the release workflow builds then zips `dist/claude-ai/`; the upgrade re-links each installed skill at the freshly built version (so users who installed before the build step existed are repointed automatically).
+- **Docs updated** (`CLAUDE.md` and `README.md`) to describe the build system, the two flavors, the templating directives, and the golden rule that local-only features must live inside a `{{FLAVOR:claude-code}}` block so the Claude.ai build stays safe.
+
 ## [0.9.0] - 2026-06-19
 
 ### Changed

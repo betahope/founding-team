@@ -50,11 +50,14 @@ jobs:
 
       - name: Build per-skill zips
         run: |
-          mkdir -p dist
+          # Compile source into the two builds. We ship the Claude.ai build here;
+          # the Claude Code build is installed locally via setup, not zipped.
+          bash ./build
+          mkdir -p release-zips
           shopt -s nullglob
           built=0
-          for dir in */; do
-            skill="${dir%/}"
+          for dir in dist/claude-ai/*/; do
+            skill="$(basename "$dir")"
             # Skip excluded skills.
             case " $EXCLUDED_SKILLS " in
               *" $skill "*)
@@ -63,18 +66,19 @@ jobs:
                 ;;
             esac
             # Only zip directories that are actually skills.
-            if [ ! -f "$skill/SKILL.md" ]; then
+            if [ ! -f "$dir/SKILL.md" ]; then
               continue
             fi
-            zip -r "dist/${skill}.zip" "$skill"
-            echo "Built dist/${skill}.zip"
+            # Zip from inside the build so the archive root is the skill folder.
+            ( cd dist/claude-ai && zip -r "$OLDPWD/release-zips/${skill}.zip" "$skill" )
+            echo "Built release-zips/${skill}.zip"
             built=$((built + 1))
           done
           if [ "$built" -eq 0 ]; then
             echo "No skills were built. Failing." >&2
             exit 1
           fi
-          ls -la dist/
+          ls -la release-zips/
 
       - name: Extract changelog section for this tag
         id: notes
@@ -114,5 +118,5 @@ jobs:
           tag_name: ${{ steps.tag.outputs.tag }}
           name: ${{ steps.tag.outputs.tag }}
           body_path: release-notes.md
-          files: dist/*.zip
+          files: release-zips/*.zip
           fail_on_unmatched_files: true

@@ -1,0 +1,168 @@
+#!/usr/bin/env bash
+# cofounder-team build — turns the source skills into finished, installable skills.
+#
+# Why this exists: the same skill ships to two very different places.
+#   - Claude Code (the local app) can run hooks, save memory files, and more.
+#   - Claude.ai (the website) can only read the skill text and its bundled notes.
+# So we keep ONE source and produce TWO builds from it:
+#   dist/claude-code/<skill>/   full version (includes the Claude Code extras)
+#   dist/claude-ai/<skill>/     safe version (words and reference notes only)
+#
+# The build also lets the four personas share common rules from one file instead
+# of copying them four times.
+#
+# It is plain bash on purpose. No Node, no npm, nothing to install. If you can run
+# `setup`, you can run this. `setup` runs it for you, so most people never call it
+# directly.
+#
+# Templating directives understood in a source SKILL.md (and in shared snippets):
+#   {{include: shared/persona/foo.md}}   insert another file here (processed too)
+#   {{set:NAME=value}}                    define a variable (the line is removed)
+#   {{var:NAME}}                          replaced by the value set above
+#   {{FLAVOR:claude-code}} ... {{/FLAVOR}}   keep this block only in the Claude Code build
+#   {{FLAVOR:claude-ai}}   ... {{/FLAVOR}}   keep this block only in the Claude.ai build
+# Anything with no directives is copied through unchanged.
+
+set -euo pipefail
+
+REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
+DIST_DIR="$REPO_DIR/dist"
+FLAVORS=(claude-code claude-ai)
+
+# Variables collected from the current source SKILL.md via {{set:...}}.
+# Stored as two parallel plain arrays so this runs on macOS's bash 3.2, which has
+# no associative arrays. VAR_NAMES[i] pairs with VAR_VALUES[i].
+VAR_NAMES=()
+VAR_VALUES=()
+
+# Read every {{set:NAME=value}} line in a file into the variable arrays. Sets are
+# only read from the top-level source file, then applied everywhere (including
+# inside includes).
+collect_sets() {
+  local file="$1" line
+  while IFS= read -r line || [ -n "$line" ]; do
+    if [[ "$line" =~ ^\{\{set:([A-Za-z0-9_]+)=(.*)\}\}[[:space:]]*$ ]]; then
+      VAR_NAMES[${#VAR_NAMES[@]}]="${BASH_REMATCH[1]}"
+      VAR_VALUES[${#VAR_VALUES[@]}]="${BASH_REMATCH[2]}"
+    fi
+  done < "$file"
+}
+
+# Replace every {{var:NAME}} in a string with its value.
+substitute_vars() {
+  local s="$1" i
+  for (( i = 0; i < ${#VAR_NAMES[@]}; i++ )); do
+    s="${s//\{\{var:${VAR_NAMES[$i]}\}\}/${VAR_VALUES[$i]}}"
+  done
+  printf '%s' "$s"
+}
+
+# Are we currently inside a flavor block that should be dropped?
+# SKIP_STACK holds one entry per open {{FLAVOR}} block: 1 = drop, 0 = keep.
+# SP is the stack pointer (number of open blocks), kept dense on purpose so
+# push/pop stay correct even after nesting.
+SKIP_STACK=()
+SP=0
+is_skipping() {
+  local i
+  for (( i = 0; i < SP; i++ )); do
+    [ "${SKIP_STACK[$i]}" = "1" ] && return 0
+  done
+  return 1
+}
+
+# Render one file for one flavor to stdout, expanding includes and flavor blocks.
+render() {
+  local file="$1" flavor="$2" line inc
+  while IFS= read -r line || [ -n "$line" ]; do
+    # {{set:...}} definition lines never appear in output.
+    if [[ "$line" =~ ^\{\{set: ]]; then
+      continue
+    fi
+    # Opening a flavor block: push whether it should be dropped.
+    if [[ "$line" =~ ^[[:space:]]*\{\{FLAVOR:([a-z-]+)\}\}[[:space:]]*$ ]]; then
+      if [ "${BASH_REMATCH[1]}" = "$flavor" ]; then
+        SKIP_STACK[$SP]="0"
+      else
+        SKIP_STACK[$SP]="1"
+      fi
+      SP=$((SP + 1))
+      continue
+    fi
+    # Closing a flavor block.
+    if [[ "$line" =~ ^[[:space:]]*\{\{/FLAVOR\}\}[[:space:]]*$ ]]; then
+      if [ "$SP" -eq 0 ]; then
+        echo "build: stray {{/FLAVOR}} in $file" >&2
+        exit 1
+      fi
+      SP=$((SP - 1))
+      unset 'SKIP_STACK['"$SP"']'
+      continue
+    fi
+    # Inside a dropped block: emit nothing.
+    if is_skipping; then
+      continue
+    fi
+    # Include another file, processed the same way.
+    if [[ "$line" =~ ^[[:space:]]*\{\{include:[[:space:]]*([^}]+)\}\}[[:space:]]*$ ]]; then
+      inc="${BASH_REMATCH[1]}"
+      # Trim trailing whitespace from the path.
+      inc="${inc%"${inc##*[![:space:]]}"}"
+      if [ ! -f "$REPO_DIR/$inc" ]; then
+        echo "build: missing include '$inc' referenced by $file" >&2
+        exit 1
+      fi
+      render "$REPO_DIR/$inc" "$flavor"
+      continue
+    fi
+    # Ordinary line: apply variable substitution and print.
+    printf '%s\n' "$(substitute_vars "$line")"
+  done < "$file"
+}
+
+# Copy everything in a skill folder EXCEPT the SKILL.md (which we render) and the
+# build-only helper files. References and any other bundled assets ship as-is.
+copy_extras() {
+  local src="$1" out="$2" entry name
+  for entry in "$src"/* "$src"/.[!.]*; do
+    [ -e "$entry" ] || continue
+    name="$(basename "$entry")"
+    case "$name" in
+      SKILL.md) continue ;;   # rendered separately
+      *) cp -R "$entry" "$out/" ;;
+    esac
+  done
+}
+
+echo "Building skills into dist/ ..."
+rm -rf "$DIST_DIR"
+
+built=0
+for src in "$REPO_DIR"/*/; do
+  skill="$(basename "$src")"
+  [ -f "$src/SKILL.md" ] || continue   # only real skills
+
+  # Reset per-skill variables, then read this skill's {{set:...}} definitions.
+  VAR_NAMES=()
+  VAR_VALUES=()
+  collect_sets "$src/SKILL.md"
+
+  for flavor in "${FLAVORS[@]}"; do
+    out="$DIST_DIR/$flavor/$skill"
+    mkdir -p "$out"
+    SKIP_STACK=()
+    SP=0
+    render "$src/SKILL.md" "$flavor" > "$out/SKILL.md"
+    if [ "$SP" -ne 0 ]; then
+      echo "build: unclosed {{FLAVOR}} block in $skill/SKILL.md" >&2
+      exit 1
+    fi
+    copy_extras "$src" "$out"
+  done
+
+  echo "  built $skill"
+  built=$((built + 1))
+done
+
+echo ""
+echo "Built $built skill(s) into $DIST_DIR/{claude-code,claude-ai}."

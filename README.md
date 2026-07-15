@@ -26,7 +26,7 @@ Works on macOS, Linux, and Windows. Open a terminal and run:
 git clone --depth 1 https://github.com/betahope/founding-team.git ~/.cofounder-team && cd ~/.cofounder-team && bash ./setup
 ```
 
-That command does three things: it clones this repo to `~/.cofounder-team`, then links each skill into `~/.claude/skills/` (where Claude Code looks for personal skills), then prints a summary.
+That command does three things: it clones this repo to `~/.cofounder-team`, then builds the skills and links each one into `~/.claude/skills/` (where Claude Code looks for personal skills), then prints a summary. The build is plain bash and needs nothing extra installed.
 
 After it finishes, **start a new Claude Code session** so the skills load.
 
@@ -107,11 +107,13 @@ Three facts make the whole thing work:
 
 1. A Claude Code skill is just a folder with a `SKILL.md` file in it.
 2. Claude Code looks for personal skills in `~/.claude/skills/`.
-3. This repo keeps every skill in one folder. The `setup` script symlinks each one into `~/.claude/skills/`.
+3. `setup` compiles the source skills into finished skills under `dist/claude-code/`, then symlinks each one into `~/.claude/skills/`.
 
-Because the entries in `~/.claude/skills/` are symlinks back into the repo (on macOS and Linux), running `git pull` inside the clone instantly updates every installed skill. No re-install needed.
+There is a small build step because the same source ships to two places: Claude Code (which can run the local-only extras like hooks and cross-session memory) and Claude.ai (which gets a simpler, words-only version). The build is plain bash, so "clone and run setup" is all you do.
 
-On Windows, where symlinks are unreliable, setup falls back to copying the folders. That means you have to re-run setup (or the upgrade skill) after every change to get the new files.
+Because the entries in `~/.claude/skills/` are symlinks into the build (on macOS and Linux), an upgrade rebuilds and re-links in one step. After a `git pull`, run `bash ./setup` again (or use `/cofounder-team-upgrade`, which does it for you) so the latest source is rebuilt. A bare `git pull` on its own updates the source but not the built skill.
+
+On Windows, where symlinks are unreliable, setup falls back to copying the folders. Either way, re-run setup (or the upgrade skill) after a pull to get the new files.
 
 ## Credits
 

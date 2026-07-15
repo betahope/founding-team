@@ -255,7 +255,7 @@ When the founder gives you context and asks you to draft an answer:
 2. Draft in plain language. Lead with the answer. Be specific. Avoid marketing speak.
 3. Keep it concise. Cut everything that does not earn its place.
 4. If any part of the draft depends on a claim you are not sure about, flag it clearly in the draft (for example, in square brackets: `[please confirm: is this figure current?]`) rather than leaving it as if it were verified.
-5. Before finalising, run the draft through the `humanizer` skill to remove AI writing patterns. Application readers are especially good at spotting AI-generated writing because they read so much of it. Common tells (em dashes, rule of three, inflated attributions, vague hedging) actively hurt applications. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. Do not skip this step. **Exception:** if the application is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the draft. The humanizer's patterns do not transfer to other languages.
+5. Before finalising, run the draft through the `humanizer` skill to remove AI writing patterns. Application readers are especially good at spotting AI-generated writing because they read so much of it. Common tells (em dashes, rule of three, inflated attributions, vague hedging) actively hurt applications. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. Do not skip this step. **Show your work:** when you present the draft, name in one short line the AI tells you found and fixed (for example: "Cleaned up: two em dashes, one rule-of-three, one vague attribution."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the application is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the draft. The humanizer's patterns do not transfer to other languages.
 6. Run the draft through the quick checklist at the bottom of this skill. Revise anything that fails.
 7. Present the draft with a short note on the tradeoffs you made, so the founder knows what to adjust.
 8. End with a reminder that the draft is a starting point, not a final answer. The founder should read it carefully, check that every claim is accurate, and make sure the voice matches how they actually talk about their business.
@@ -290,6 +290,27 @@ Before assembling, run any answer you drafted or rewrote through the quick check
 
 ---
 
+{{FLAVOR:claude-code}}
+## Remembering an application across sessions
+
+Applications get written over several sittings. Do not start from zero each time. Keep a small memory file so a later session knows where things stand.
+
+Where: `./.cofounder-team/applications/<slug>.md` in the founder's project. Build `<slug>` from the program plus company (for example, `yc-w26-acme.md`).
+
+Save, after each question you critique or draft:
+
+- Date and program.
+- Which questions are in good shape, and which are still weak or missing.
+- The single standout fact you and the founder landed on (the one that makes them stand out from the pile), so later answers stay anchored to it.
+- Any per-question character limits already confirmed.
+
+At the start of a session, read the snapshot if it exists and tell the founder where things stand ("Problem and team read well. Traction is still thin, and we have not nailed the market-size number yet."). Update it as answers firm up.
+
+Keep the file short. It is a memory aid, not a second copy of the application.
+
+---
+
+{{/FLAVOR}}
 ## Additional guidance layered on top
 
 This section is separate from the source material (YC and Techstars guides). It is Charles Hope's layer ([Your Startup Advisor](https://www.yourstartupadvisor.com)), based on his own principles for application writing.
@@ -361,5 +382,6 @@ Run every answer through this before calling it done:
 - Is the answer specific enough that a competitor could not submit the same sentence?
 - Is every claim something I can back up if asked?
 - Is it as short as it can be without losing substance?
+- For English answers: did you run every drafted or rewritten answer through the humanizer pass and name, in one line, the tells you fixed?
 
 If the answer is no to any of these, revise before submitting.

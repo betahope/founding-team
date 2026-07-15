@@ -178,6 +178,17 @@ obvious as slop. Good writing has a human behind it.
 - **User provided a writing sample**: match the sample, not the defaults above. See
   `references/voice-calibration.md`.
 
+{{FLAVOR:claude-code}}
+## Optional: passive slop-check hook
+
+This skill only helps when something invokes it. The worst copy slips through when
+nobody runs the humanizer at all. The bundle ships an optional Claude Code hook
+that scans text files after they are written and nudges you to run the humanizer if
+it spots obvious tells. It is opt-in, heuristic, and off by default. See
+`hooks/README.md` in the repo for what it catches and how to turn it on. It is a
+backstop, not a replacement for a real humanizer pass.
+{{/FLAVOR}}
+
 ---
 
 Source: [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing),
