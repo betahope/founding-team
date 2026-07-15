@@ -14,6 +14,8 @@ The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it p
 
 ## [Unreleased]
 
+## [0.10.0] - 2026-07-15
+
 Turns the bundle from single-source prose into a source that compiles into two builds, and lands four skill improvements drawn from Paul Bakaus's "The Dark Arts of Skill Engineering." The install and upgrade flow is unchanged for users: still "clone and run setup," and an upgrade still needs no extra action.
 
 ### Added
