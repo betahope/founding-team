@@ -10,7 +10,7 @@ set -euo pipefail
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 
 # Turn the source skills into finished, installable skills. This produces the
-# Claude Code build under dist/claude-code/ (and the Claude.ai build we ship as
+# Claude Code build under dist/claude-code/ (and the portable build we ship as
 # release zips). Plain bash, no extra tools needed.
 bash "$REPO_DIR/build"
 echo ""

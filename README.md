@@ -1,6 +1,6 @@
 # The Founding Team
 
-*Your AI founding team, inside Claude.*
+*Your AI founding team, wherever you work: Claude, ChatGPT, and any tool that supports Agent Skills.*
 
 A set of portable [Agent Skills](https://agentskills.io) that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
 
@@ -16,7 +16,7 @@ This is built into the skills, not bolted on. Every persona carries a Boundaries
 
 ## Install
 
-Two paths, pick the one that matches where you use Claude.
+Pick the path that matches where you work.
 
 ### Install in Claude Code
 
@@ -46,9 +46,23 @@ Releases start at v0.3.0. Earlier versions (v0.1.0, v0.2.0) only ship via the Cl
 
 If you are using the skills inside a Claude.ai project, the repo also includes a [project instructions template](claude-ai-project-instructions-template.md) you can paste into the project's instructions field. It tells Claude how to route between the four co-founders, when to bring more than one voice into a single message, and what defaults to apply.
 
+### Install in ChatGPT
+
+ChatGPT supports the same Agent Skills standard, so the release zips work there too. Tested with this bundle.
+
+1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest) and download the `.zip` for each skill you want.
+2. In ChatGPT, open **Plugins** in the sidebar and switch to the **Skills** tab, or go straight to [chatgpt.com/skills](https://chatgpt.com/skills).
+3. Click the **+** button, choose **Upload from your computer**, and pick a zip. ChatGPT scans each skill on upload and it becomes available right after.
+
+To upgrade later, download the newer zips and upload them again, the same as on Claude.ai. The `cofounder-team-upgrade` skill is Claude Code only and is not part of the zips.
+
+### Install in other tools
+
+Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and dozens of other tools also support Agent Skills. Download the zips from the [latest release](https://github.com/betahope/founding-team/releases/latest), unzip them, and put each skill folder where your tool keeps skills (its docs will say where, and [agentskills.io](https://agentskills.io) links each tool's setup guide). We build and test on Claude and ChatGPT, so in other tools treat the skills as expected to work rather than guaranteed. If one misbehaves, [open an issue](https://github.com/betahope/founding-team/issues).
+
 ## The skills
 
-Each skill is a folder with a `SKILL.md` inside. Once installed, you trigger them with `/skill-name` or by mentioning them in chat ("ask Jack", "what would Maya think", etc.).
+Each skill is a folder with a `SKILL.md` inside. Once installed, trigger them by mentioning them ("ask Jack", "what would Maya think"). In Claude Code you can also type `/skill-name`.
 
 - **jack** — Sales, marketing, and growth co-founder. Positioning, pricing, GTM, written content, growth experiments.
 - **maya** — Product and UX co-founder. Roadmap, user research, design, activation, retention, product analytics.
@@ -61,7 +75,7 @@ Each skill is a folder with a `SKILL.md` inside. Once installed, you trigger the
 
 ## Built on an open standard
 
-Every skill here follows the [Agent Skills](https://agentskills.io) format, an open standard started by Anthropic and now supported by dozens of AI tools. Claude Code and Claude.ai are the two supported install paths, but the release zips are plain Agent Skills folders with nothing Claude-specific inside. If your tool of choice supports the standard (Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and many others do), you can download a zip from the [latest release](https://github.com/betahope/founding-team/releases/latest), unzip it, and use the skill there too. Check your tool's docs for where skill folders go.
+Every skill here follows the [Agent Skills](https://agentskills.io) format, an open standard started by Anthropic and now supported by dozens of AI tools. That is why the same release zips install cleanly in Claude, ChatGPT, and other tools, with nothing Claude-specific inside. See the [Install](#install) section above for the path that matches your tool.
 
 ## Upgrade
 

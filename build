@@ -1,12 +1,15 @@
 #!/usr/bin/env bash
 # cofounder-team build — turns the source skills into finished, installable skills.
 #
-# Why this exists: the same skill ships to two very different places.
+# Why this exists: the same skill ships to two very different kinds of place.
 #   - Claude Code (the local app) can run hooks, save memory files, and more.
-#   - Claude.ai (the website) can only read the skill text and its bundled notes.
+#   - Every other Agent Skills tool (Claude.ai, ChatGPT, and the rest) can only
+#     read the skill text and its bundled notes.
 # So we keep ONE source and produce TWO builds from it:
 #   dist/claude-code/<skill>/   full version (includes the Claude Code extras)
-#   dist/claude-ai/<skill>/     safe version (words and reference notes only)
+#   dist/portable/<skill>/      portable version (words and reference notes only,
+#                                runs in any tool that supports Agent Skills:
+#                                Claude.ai, ChatGPT, and others)
 #
 # The build also lets the four personas share common rules from one file instead
 # of copying them four times.
@@ -27,14 +30,14 @@
 #                                          substituted before any per-skill set is
 #                                          read.
 #   {{FLAVOR:claude-code}} ... {{/FLAVOR}}   keep this block only in the Claude Code build
-#   {{FLAVOR:claude-ai}}   ... {{/FLAVOR}}   keep this block only in the Claude.ai build
+#   {{FLAVOR:portable}}    ... {{/FLAVOR}}   keep this block only in the portable build
 # Anything with no directives is copied through unchanged.
 
 set -euo pipefail
 
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 DIST_DIR="$REPO_DIR/dist"
-FLAVORS=(claude-code claude-ai)
+FLAVORS=(claude-code portable)
 
 # Every skill's frontmatter can reference the bundle version without a {{set}}
 # line. Read once here, then seeded into the variable arrays for each skill below.
@@ -179,4 +182,4 @@ for src in "$REPO_DIR"/*/; do
 done
 
 echo ""
-echo "Built $built skill(s) into $DIST_DIR/{claude-code,claude-ai}."
+echo "Built $built skill(s) into $DIST_DIR/{claude-code,portable}."

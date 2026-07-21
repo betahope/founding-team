@@ -54,19 +54,19 @@ jobs:
 
       - name: Build, validate, and zip per-skill
         run: |
-          # Compile source into the two builds. We ship the Claude.ai build here;
+          # Compile source into the two builds. We ship the portable build here;
           # the Claude Code build is installed locally via setup, not zipped.
           bash ./build
 
           # Validate every built skill against the Agent Skills spec before shipping.
-          for dir in dist/claude-ai/*/ dist/claude-code/*/; do
+          for dir in dist/portable/*/ dist/claude-code/*/; do
             npx -y skills-ref validate "$dir"
           done
 
           mkdir -p release-zips
           shopt -s nullglob
           built=0
-          for dir in dist/claude-ai/*/; do
+          for dir in dist/portable/*/; do
             skill="$(basename "$dir")"
             # Skip excluded skills.
             case " $EXCLUDED_SKILLS " in
@@ -80,7 +80,7 @@ jobs:
               continue
             fi
             # Zip from inside the build so the archive root is the skill folder.
-            ( cd dist/claude-ai && zip -r "$OLDPWD/release-zips/${skill}.zip" "$skill" )
+            ( cd dist/portable && zip -r "$OLDPWD/release-zips/${skill}.zip" "$skill" )
             echo "Built release-zips/${skill}.zip"
             built=$((built + 1))
           done
