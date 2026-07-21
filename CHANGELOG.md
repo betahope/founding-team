@@ -14,6 +14,12 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.11.2] - 2026-07-21
+
+### Added
+
+- **`.gstack/` in `.gitignore`.** Local gstack developer tooling creates this folder inside the repo; it is machine-local state and never part of the bundle, so git now ignores it.
+
 ## [0.11.1] - 2026-07-21
 
 Makes the multi-tool story concrete: a hands-on tested ChatGPT install path in the README, and the internal build flavor renamed to match what it really is.

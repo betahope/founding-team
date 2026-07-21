@@ -2,3 +2,4 @@
 .claude/
 dist/
 release-zips/
+.gstack/
