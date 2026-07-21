@@ -14,6 +14,20 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.11.1] - 2026-07-21
+
+Makes the multi-tool story concrete: a hands-on tested ChatGPT install path in the README, and the internal build flavor renamed to match what it really is.
+
+### Added
+
+- **"Install in ChatGPT" section in `README.md`.** ChatGPT supports the Agent Skills standard, and we verified our zips there by hand: open **Plugins** in the sidebar, switch to the **Skills** tab (or go to chatgpt.com/skills), click **+**, choose **Upload from your computer**. Upgrading is re-download and re-upload, the same as on Claude.ai.
+- **"Install in other tools" section in `README.md`.** Covers Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and other Agent Skills tools, with honest expectations: we test on Claude and ChatGPT, elsewhere the skills are expected to work rather than guaranteed.
+
+### Changed
+
+- **Renamed the `claude-ai` build flavor to `portable`.** The words-only build now lives at `dist/portable/` and the directive is `{{FLAVOR:portable}}`, since the release zips ship to Claude.ai, ChatGPT, and any other Agent Skills tool, not just the Claude website. Internal only: zip names, install steps, and installed skills are unchanged. `build`, the release workflow, and `CLAUDE.md` were updated together; no source skill used the old directive.
+- **README reframed as multi-tool.** New tagline, install intro, and a slimmer "Built on an open standard" section that points at the install paths instead of repeating them.
+
 ## [0.11.0] - 2026-07-21
 
 Aligns the skill bundle with the Agent Skills spec (https://agentskills.io/specification), the open standard shared by Claude Code, Claude.ai, and other tools.
