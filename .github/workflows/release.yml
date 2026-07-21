@@ -5,6 +5,10 @@ name: Build Claude.ai release zips
 # zips are how users install the bundle into Claude.ai (Customize -> Skills ->
 # Upload in the left sidebar).
 #
+# Before anything is zipped, every built skill (both flavors) is validated
+# against the Agent Skills spec with skills-ref, so an off-spec frontmatter
+# change can never ship.
+#
 # Fires automatically on any v* tag push. Can also be triggered manually via
 # workflow_dispatch (useful for backfilling a release if the auto-build failed
 # or for retrying after an edit).
@@ -48,11 +52,17 @@ jobs:
         with:
           ref: ${{ steps.tag.outputs.tag }}
 
-      - name: Build per-skill zips
+      - name: Build, validate, and zip per-skill
         run: |
           # Compile source into the two builds. We ship the Claude.ai build here;
           # the Claude Code build is installed locally via setup, not zipped.
           bash ./build
+
+          # Validate every built skill against the Agent Skills spec before shipping.
+          for dir in dist/claude-ai/*/ dist/claude-code/*/; do
+            npx -y skills-ref validate "$dir"
+          done
+
           mkdir -p release-zips
           shopt -s nullglob
           built=0

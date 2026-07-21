@@ -2,7 +2,7 @@
 
 *Your AI founding team, inside Claude.*
 
-A set of portable Claude Code skills that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
+A set of portable [Agent Skills](https://agentskills.io) that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
 
 They work as a team, not as four tools you switch between. More on that below.
 
@@ -58,6 +58,10 @@ Each skill is a folder with a `SKILL.md` inside. Once installed, you trigger the
 - **startup-application-coach** — Helps you write stronger applications to accelerators, incubators, and pre-accelerators (YC, Techstars, EF, Antler, and others).
 - **humanizer** — Strips AI tells out of any user-facing copy. The other skills call this one before showing you a draft.
 - **cofounder-team-upgrade** — The upgrade skill itself. Runs the update workflow when you ask.
+
+## Built on an open standard
+
+Every skill here follows the [Agent Skills](https://agentskills.io) format, an open standard started by Anthropic and now supported by dozens of AI tools. Claude Code and Claude.ai are the two supported install paths, but the release zips are plain Agent Skills folders with nothing Claude-specific inside. If your tool of choice supports the standard (Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and many others do), you can download a zip from the [latest release](https://github.com/betahope/founding-team/releases/latest), unzip it, and use the skill there too. Check your tool's docs for where skill folders go.
 
 ## Upgrade
 

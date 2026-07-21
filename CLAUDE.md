@@ -59,7 +59,7 @@ One source, two builds. The same skill ships to Claude Code (which can run hooks
 
 - `{{include: shared/persona/foo.md}}` — insert another file here (also processed). Path is relative to the repo root. Must be alone on its line.
 - `{{set:NAME=value}}` — define a variable (the line is removed from output). Read from the source `SKILL.md` only.
-- `{{var:NAME}}` — replaced by the value set above.
+- `{{var:NAME}}` — replaced by the value set above. `{{var:BUNDLE_VERSION}}` is a built-in exception: `build` always defines it from the repo's `VERSION` file, so no skill needs its own `{{set:BUNDLE_VERSION=...}}` line. The name is reserved: if a skill sets it anyway, the built-in value still wins.
 - `{{FLAVOR:claude-code}} ... {{/FLAVOR}}` — keep this block only in the Claude Code build.
 - `{{FLAVOR:claude-ai}} ... {{/FLAVOR}}` — keep this block only in the Claude.ai build.
 
@@ -67,11 +67,13 @@ A source file with no directives is copied through unchanged, so most edits need
 
 **Golden rule: never break the Claude.ai build.** Anything that needs a hook, a helper agent, a script, or persistent memory is Claude Code only. Put it inside a `{{FLAVOR:claude-code}}` block so the website build never sees it. Universal, words-only improvements need no flavor wrapper.
 
+Every skill's frontmatter must stay within the Agent Skills spec fields (`name`, `description`, `license`, `compatibility`, `metadata`, `allowed-tools`; spec at https://agentskills.io/specification). Anything outside that set fails `skills-ref` validation in the release workflow.
+
 After any change to a source skill or a shared snippet, run `bash ./build` and confirm no `{{` directives leak into `dist/` (`grep -rn "{{" dist/` should be empty except in intended literal cases). `setup` runs the build automatically.
 
 ## Adding a new skill
 
-1. Create `<skill-name>/SKILL.md` at the repo root with valid frontmatter (`name`, `description`, optionally `version`, `license`, `allowed-tools`). You can use the build directives (includes, flavor blocks) if useful, but a plain `SKILL.md` with no directives works too.
+1. Create `<skill-name>/SKILL.md` at the repo root with valid frontmatter (`name`, `description`, optionally `license`, `compatibility`, `metadata`, `allowed-tools`). You can use the build directives (includes, flavor blocks) if useful, but a plain `SKILL.md` with no directives works too.
 2. Run `bash ./setup` to build and link it into `~/.claude/skills/`.
 3. Update `README.md`'s "The skills" list (and the "Install in Claude.ai" step list if the skill should ship to Claude.ai too).
 4. If other skills should hand off to it, add it to their **Companion skills** / **Boundaries** sections.
@@ -105,7 +107,7 @@ What the version numbers mean here:
 
 Every change goes into the `[Unreleased]` section of `CHANGELOG.md` as it ships. When cutting a release: rename `[Unreleased]` to the new version and date (`[X.Y.Z] - YYYY-MM-DD`), insert a fresh empty `[Unreleased]` at the top, bump `VERSION`, commit, then `git tag vX.Y.Z` and `git push --tags`.
 
-The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it predates the bundle. That number is informational; the bundle version is authoritative for upgrade decisions. Do not propagate per-skill versions to the other SKILL.md files.
+The `humanizer` skill keeps its own version, now under `metadata.version` in frontmatter, because it predates the bundle. That number is informational; the bundle version is authoritative for upgrade decisions. Do not propagate per-skill versions to the other SKILL.md files.
 
 ## The upgrade skill
 

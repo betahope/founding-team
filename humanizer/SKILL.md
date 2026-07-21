@@ -1,27 +1,23 @@
 ---
 name: humanizer
-version: 3.0.0
 description: |
   Remove signs of AI-generated writing from text so it sounds like a person wrote it.
-  Use proactively whenever creating or editing any user-facing copy — UI strings,
+  Use proactively whenever creating or editing any user-facing copy: UI strings,
   button labels, landing page sections, marketing copy, emails, blog posts, product
   descriptions, documentation prose, in-app messages, error states, empty states.
-  Detects and fixes 28 AI writing tells including em dash overuse, promotional
+  Detects and fixes 28 AI writing tells, including em dash overuse, promotional
   language ("nestled", "vibrant"), superficial -ing analyses, negative parallelism
   ("not just X, it's Y"), copula avoidance ("serves as" instead of "is"), rule of
   three, high-frequency AI vocabulary, vague attributions, signposting ("let's dive
   in"), and filler phrases. Based on Wikipedia's "Signs of AI writing" guide. Use
-  this skill even when the user doesn't explicitly ask — if they're writing
+  this skill even when the user doesn't explicitly ask. If the user is writing
   user-facing text, run humanizer on the draft before returning it.
 license: MIT
-compatibility: claude-code opencode
-allowed-tools:
-  - Read
-  - Write
-  - Edit
-  - Grep
-  - Glob
-  - AskUserQuestion
+metadata:
+  author: betahope
+  version: "3.0.0"
+  bundle-version: "{{var:BUNDLE_VERSION}}"
+allowed-tools: Read Write Edit Grep Glob AskUserQuestion
 ---
 
 # Humanizer

@@ -19,6 +19,13 @@
 #   {{include: shared/persona/foo.md}}   insert another file here (processed too)
 #   {{set:NAME=value}}                    define a variable (the line is removed)
 #   {{var:NAME}}                          replaced by the value set above
+#   {{var:BUNDLE_VERSION}}                always defined, straight from the VERSION
+#                                          file, no {{set}} needed. The name is
+#                                          reserved: a skill's own
+#                                          {{set:BUNDLE_VERSION=...}} will not win,
+#                                          because the built-in value is already
+#                                          substituted before any per-skill set is
+#                                          read.
 #   {{FLAVOR:claude-code}} ... {{/FLAVOR}}   keep this block only in the Claude Code build
 #   {{FLAVOR:claude-ai}}   ... {{/FLAVOR}}   keep this block only in the Claude.ai build
 # Anything with no directives is copied through unchanged.
@@ -28,6 +35,10 @@ set -euo pipefail
 REPO_DIR="$(cd "$(dirname "$0")" && pwd)"
 DIST_DIR="$REPO_DIR/dist"
 FLAVORS=(claude-code claude-ai)
+
+# Every skill's frontmatter can reference the bundle version without a {{set}}
+# line. Read once here, then seeded into the variable arrays for each skill below.
+BUNDLE_VERSION="$(tr -d '[:space:]' < "$REPO_DIR/VERSION")"
 
 # Variables collected from the current source SKILL.md via {{set:...}}.
 # Stored as two parallel plain arrays so this runs on macOS's bash 3.2, which has
@@ -142,9 +153,12 @@ for src in "$REPO_DIR"/*/; do
   skill="$(basename "$src")"
   [ -f "$src/SKILL.md" ] || continue   # only real skills
 
-  # Reset per-skill variables, then read this skill's {{set:...}} definitions.
-  VAR_NAMES=()
-  VAR_VALUES=()
+  # Reset per-skill variables, seeding the built-in BUNDLE_VERSION first so it is
+  # always available and so a skill's own {{set:BUNDLE_VERSION=...}}, read next,
+  # can't override it (substitute_vars applies entries in order and the token is
+  # already gone by the time the later entry is checked).
+  VAR_NAMES=(BUNDLE_VERSION)
+  VAR_VALUES=("$BUNDLE_VERSION")
   collect_sets "$src/SKILL.md"
 
   for flavor in "${FLAVORS[@]}"; do

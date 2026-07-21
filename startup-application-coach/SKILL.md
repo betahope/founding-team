@@ -1,6 +1,10 @@
 ---
 name: startup-application-coach
 description: Help founders write stronger applications to startup programs, accelerators, incubators, and pre-accelerators. Use when a founder is drafting, reviewing, critiquing, or getting unstuck on any accelerator application question, or working on a founder, team, or demo video. Triggers include answering an application question, reviewing a draft, framing traction, describing a problem or solution, planning a video, or any mention of a startup program application. Use even when no specific program is named, as long as the context is a startup program application. Also triggers when the user mentions "coach" in a startup application context. Covers common questions (problem, solution, team, traction, business model, target audience, competitors, competitive advantage, timing, customer acquisition, milestones), founder and demo video guidance, plus program-specific notes where available.
+license: MIT
+metadata:
+  author: betahope
+  bundle-version: "{{var:BUNDLE_VERSION}}"
 ---
 
 # Startup Application Coach

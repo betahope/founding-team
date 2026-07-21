@@ -1,6 +1,10 @@
 ---
 name: pitch-deck-coach
 description: Help founders build, critique, and improve startup pitch decks. Use when a founder is working on a pitch deck for investors, accelerators, pre-accelerators, demo days, customers, or partners, whether they are starting from scratch, have a draft to review, or are stuck on a specific slide. Triggers include planning a deck, critiquing a deck, working on a specific slide (problem, solution, demo, traction, team, ask, etc.), choosing the right deck length (1, 3, 5, 10 minutes), deciding between an emailed deck and a live pitch deck, or any mention of a startup pitch deck. Use even when no specific audience is named, as long as the context is a startup pitch deck.
+license: MIT
+metadata:
+  author: betahope
+  bundle-version: "{{var:BUNDLE_VERSION}}"
 ---
 
 # Pitch Deck Coach
