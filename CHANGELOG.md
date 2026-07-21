@@ -10,9 +10,26 @@ What the version numbers mean for this bundle:
 - **MINOR** — A new skill ships, a new section or capability is added to an existing skill, a persona's scope expands, or any backwards-compatible behavior change.
 - **PATCH** — Typos, wording polish, small clarifications, internal cross-reference fixes, or other changes that do not alter behavior.
 
-The `humanizer` skill keeps its own `version: 3.0.0` in frontmatter because it predates the bundle and tracks its own internal history. That number is informational; the bundle version in `VERSION` is authoritative for upgrade decisions.
+The `humanizer` skill keeps its own version, now under `metadata.version` in frontmatter, because it predates the bundle and tracks its own internal history. That number is informational; the bundle version in `VERSION` is authoritative for upgrade decisions.
 
 ## [Unreleased]
+
+## [0.11.0] - 2026-07-21
+
+Aligns the skill bundle with the Agent Skills spec (https://agentskills.io/specification), the open standard shared by Claude Code, Claude.ai, and other tools.
+
+### Added
+
+- **Spec-compliant frontmatter.** Every skill's frontmatter now carries `license: MIT` and a `metadata` block (`author: betahope`, `bundle-version`). The build reads the version from the `VERSION` file through a new built-in `{{var:BUNDLE_VERSION}}` directive, so a release zip identifies which bundle version it came from.
+- **`compatibility` field on `cofounder-team-upgrade`.** Marks it Claude Code only, since it needs git and a local clone. This is the spec's intended use of that field.
+- **CI validation gate.** The release workflow now validates every built skill, in both flavors, with the official `skills-ref` validator right after building and before zipping, so an off-spec skill can never ship.
+- **"Built on an open standard" section in `README.md`.** The intro now calls the bundle portable Agent Skills, and the new section explains that release zips are plain Agent Skills folders that work in any tool supporting the standard (Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and others), not just Claude Code and Claude.ai.
+- **Docs.** `CLAUDE.md` documents the built-in `{{var:BUNDLE_VERSION}}` directive, the spec's allowed frontmatter fields, and where the humanizer version now lives.
+
+### Changed
+
+- **`humanizer` frontmatter, made spec-compliant.** The top-level `version: 3.0.0` field, not allowed by the spec and the one thing that failed the official validator, moved to `metadata.version`. `allowed-tools` changed from a YAML list to the spec's space-separated string. The `compatibility` field was dropped, since the skill is words-only and runs anywhere. The description was rewritten without em dashes.
+- **Dan's description trimmed.** Down from exactly 1024 characters, the spec's hard limit, to 981, keeping every trigger keyword.
 
 ## [0.10.0] - 2026-07-15
 
