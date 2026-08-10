@@ -76,6 +76,7 @@ What to cover in 60 seconds:
 - The solution (one sentence).
 - One piece of proof (a metric, a customer name, a demo line).
 - The ask (one sentence).
+- The vision as the closing line (one sentence). Even at 60 seconds, the audience should hear where this is going. See "Where vision goes" in the skill.
 
 That is it. Cut everything else. Founders often try to cram a 5-minute pitch into a minute and lose every second to context-setting. The right move is to ruthlessly compress.
 
@@ -83,7 +84,7 @@ If you are using slides, use them as anchor visuals. One per major beat. Do not 
 
 ### 3-minute pitch
 
-The most common accelerator demo day length. Typically 5 to 7 slides.
+A common length for demo days and pitch competitions. Demo day formats vary by program (YC runs about 1 minute, Techstars about 5), so always confirm the exact time with the program. Typically 5 to 7 slides.
 
 **Why 5 to 7 slides.** A demo day audience sits through dozens of pitches in a row. Realistically, they will remember 1 or 2 things from any given pitch. That means the deck should contain at most 5 to 7 ideas the founder wants the audience to remember. More slides do not help; they spread the audience's attention thinner and make every idea harder to hold on to. Pick the 5 to 7 things that matter most and build the deck around them.
 
@@ -98,6 +99,8 @@ A workable structure:
 7. Team and ask slide (20 seconds).
 
 Cover slide and team/ask can be combined to save a slide. A demo video is usually stronger than describing the demo.
+
+Vision still applies at this length. There is no room for a dedicated vision slide, so fold it into the problem framing on slide 2 or deliver it as the closing line over the final slide. A 3-minute pitch with no vision beat reads as a tactical product pitch with no destination.
 
 The thing that kills 3-minute pitches: founders try to do 5 minutes of content in 3 minutes and end up rushing. Cut content until it fits comfortably.
 
@@ -114,6 +117,7 @@ You have room for:
 - A "why now" or competition slide.
 - A proper team slide.
 - An ask slide.
+- Vision, opening (right after the problem) or closing. Closing is the safer default.
 
 Same rule as 3-minute: do not cram. The extra two minutes give you room to breathe, not to add content.
 
@@ -131,6 +135,7 @@ Now you have room for:
 - Customer evidence slides (logos, quotes, case studies).
 - A clear team slide with founder backgrounds.
 - A real ask with use of funds.
+- Vision, opening or closing (see "Where vision goes" in the skill). Closing is the safer default.
 
 Even at 10 minutes, less is more. Most 10-minute pitches that go badly are 15 minutes of content rushed into 10.
 

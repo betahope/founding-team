@@ -128,7 +128,7 @@ This also means the deep answers (the bottom-up TAM, the moat reasoning) are the
 
 ### Specific Techstars emphases
 
-**Bottom-up TAM is required.** Techstars specifically asks "how much money could you make?" and expects a bottom-up calculation: ACV × number of potential customers. Top-down market size claims ("the global X market is $Y billion") will not satisfy the question. This is the question founders fail most often. For the full method (segmenting buyers, sourcing the buyer count, sanity-checking) and the option to research the buyer count and price via web search, read `references/bottom-up-tam.md`.
+**Bottom-up TAM is required.** Techstars specifically asks "how much money could you make?" and expects a bottom-up calculation: ACV × number of potential customers. Top-down market size claims ("the global X market is $Y billion") will not satisfy the question. This is the question founders fail most often. For the full method (segmenting buyers, sourcing the buyer count, sanity-checking) and the option to research the buyer count and price via web search, read `bottom-up-tam.md`.
 
 **Target audience: be specific about the decision-maker.** Techstars wants to see the persona who has the problem, knows they have it, has quantified it, and will do something about it. "Fitness centers" is wrong. "The 60 COOs of YMCA Metro Groups who control 1,000 facilities" is right.
 
@@ -148,7 +148,7 @@ Techstars gives you explicit prompts to work with on the competitive advantage q
 
 These are genuinely useful prompts. Use them to stress-test your answer.
 
-Most early software startups do not have a durable moat on day one, and that is normal. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." For the modern view (the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints), read `references/moats.md`.
+Most early software startups do not have a durable moat on day one, and that is normal. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." For the modern view (the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints), read `moats.md`.
 
 ### Milestones: next features or next learnings
 

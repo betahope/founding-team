@@ -140,7 +140,7 @@ Every slide should look like it belongs to the same deck.
 - Same font.
 - Same colour palette.
 - Same heading position on every slide.
-- Same logo position on every slide (usually a small mark in the corner).
+- Company logo on the cover slide only, not repeated on every slide (see the common design mistakes below).
 - Same body text style.
 
 If slide 3 has a heading at the top in dark blue and slide 7 has a heading on the left in red, the deck looks like it was assembled by three different people.

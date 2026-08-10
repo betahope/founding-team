@@ -14,6 +14,27 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.12.0] - 2026-08-10
+
+A correctness and consistency release: fixes from a full review of every skill against its own rules and the Agent Skills spec.
+
+### Fixed
+
+- **Bottom-up TAM math error.** The worked example in `startup-application-coach` said 749,404 restaurants at $1,200/year is "roughly $749.4M". The correct product is roughly $899M. Fixed in `references/bottom-up-tam.md` and `references/questions.md`; `pitch-deck-coach`'s copy of the example already had the right figure.
+- **Fabricated facts about real companies in example bios.** The strong team-slide and team-answer examples credited "Jordan" with roles at Stripe and Brex, including a Brex acquisition in 2018 that never happened. Both examples now use clearly fictional companies, with a note that real answers should name real, verifiable employers. Fixed in `pitch-deck-coach/references/slide-by-slide.md` and `startup-application-coach/references/questions.md`.
+- **Broken repo links in the Claude.ai template.** `claude-ai-project-instructions-template.md` linked to `betahope/cofounder-team`; the repo is `betahope/founding-team`. Both links 404'd.
+- **Logo self-contradiction in the design reference.** `design-principles.md` told founders to put the logo on every slide in one section and called that an amateur mistake in another. Resolved to the cover-only rule, matching the skill's red-flag list.
+- **Short live pitches now carry the vision beat.** The skill makes vision non-negotiable at every length, but the 1-minute, 3-minute, 5-minute, and 10-minute structures in `deck-types.md` never mentioned it. Each length now says where vision goes.
+- **Demo day length corrected.** `audience-asks.md` and `deck-types.md` stated demo days are "usually 3 minutes". Formats vary by program (YC about 1 minute, Techstars about 5); both files now say so and tell founders to confirm with the program.
+- **Wrong relative links between reference files.** Files inside `references/` linked to siblings as `references/<file>.md`, which resolves nowhere from there. Now plain sibling filenames, per the Agent Skills spec's file-reference guidance. Fixed in `pitch-deck-coach/references/slide-by-slide.md`, `startup-application-coach/references/questions.md`, and `references/program-specific.md`.
+- **Grammar in Jack, Maya, and Priya's descriptions.** "keep things as simple" is now "keeps things as simple" in all three frontmatter descriptions, the text every user sees in their skills list.
+- **The humanizer no longer uses em dashes in its own prose.** The skill that flags em-dash overuse (and the repo that bans em dashes) was full of them, including one in a recommended "After" rewrite. Instructional prose in `humanizer/SKILL.md`, `references/patterns.md`, `references/voice-calibration.md`, and `references/example.md` is now em-dash-free; quoted example text that demonstrates AI tells keeps them on purpose.
+
+### Changed
+
+- **Dan's copy delivery is now flavor-aware.** The rule to save final copy to `./drafts/<slug>.md` is Claude Code only; the portable build (Claude.ai, ChatGPT, and other Agent Skills tools) now instead asks for final copy in a clearly separated Markdown block, with no dependence on file paths. Previously the portable build shipped a filesystem instruction that cannot work there.
+- **Persona section order unified.** Maya, Priya, and Dan now place "How you talk" before the humanizer section, matching Jack and the canonical shape documented in `CLAUDE.md`. No wording changed; sections moved only.
+
 ## [0.11.2] - 2026-07-21
 
 ### Added

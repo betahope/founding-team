@@ -2,7 +2,7 @@
 
 Long-form walkthrough of the three-stage workflow (draft → self-audit → final) applied
 to an essay-scale input. Use this as a reference when you need to see how the patterns
-and voice principles combine at scale. Most tasks don't need all three stages — see
+and voice principles combine at scale. Most tasks don't need all three stages; see
 the "Right-sizing your output" section of SKILL.md.
 
 ---
@@ -77,12 +77,12 @@ the "Right-sizing your output" section of SKILL.md.
 
 Remaining tells to fix:
 
-- Rhythm is still a bit too tidy — clean contrasts, evenly paced paragraphs.
+- Rhythm is still a bit too tidy: clean contrasts, evenly paced paragraphs.
 - Named people and study citations read like plausible-but-made-up placeholders unless
   they're real and sourced. Risk: fabrication.
 - The closer leans slogan-y ("If you do not have tests...") rather than sounding like
   a person talking. No contractions.
-- "They are" / "they do not" — no contractions throughout. Formal AI register.
+- "They are" / "they do not": no contractions throughout. Formal AI register.
 
 ---
 

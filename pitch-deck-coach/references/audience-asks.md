@@ -62,7 +62,7 @@ For more on accelerator applications generally, see the startup-application-coac
 
 A demo day is the live pitch event at the end of an accelerator program. The audience is investors and program partners. The ask is back to the investor ask: how much, on what terms, for what milestones.
 
-Demo day decks are almost always live pitch decks. Length is usually 3 minutes. See `deck-types.md` for the 3-minute pitch structure.
+Demo day decks are almost always live pitch decks. Length varies by program: YC runs about 1 minute, Techstars about 5, and many other programs sit around 3. Always confirm the exact time with the program. See `deck-types.md` for structures by length.
 
 **Common mistakes on demo day decks:**
 

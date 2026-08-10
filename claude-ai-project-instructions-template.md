@@ -4,9 +4,9 @@
 
 Copy the block below by clicking the copy button in its top-right corner, then paste it into your Claude.ai project's instructions field. After pasting, replace `[Company]` with the name of your product or company everywhere it appears, and fill in the Quick Context section at the end with your own basics.
 
-The four co-founders referenced below are the AI co-founders from [the cofounder-team GitHub repo](https://github.com/betahope/cofounder-team). Keep them as they are. Each co-founder must have its own installed skill in your Claude.ai project for the triggers to work.
+The four co-founders referenced below are the AI co-founders from [the cofounder-team GitHub repo](https://github.com/betahope/founding-team). Keep them as they are. Each co-founder must have its own installed skill in your Claude.ai project for the triggers to work.
 
-If the copy button does not work for you, open the [raw version of this file](https://raw.githubusercontent.com/betahope/cofounder-team/main/claude-ai-project-instructions-template.md) and copy everything from "Communication Default" down to the bottom.
+If the copy button does not work for you, open the [raw version of this file](https://raw.githubusercontent.com/betahope/founding-team/main/claude-ai-project-instructions-template.md) and copy everything from "Communication Default" down to the bottom.
 
 ---
 

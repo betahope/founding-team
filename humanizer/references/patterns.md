@@ -1,4 +1,4 @@
-# AI writing patterns — full catalog
+# AI writing patterns: full catalog
 
 Full reference for the 28 patterns indexed in `SKILL.md`. Each entry has a watch list,
 the underlying problem, and a before/after example.
@@ -240,14 +240,14 @@ scale. The shape of the phrase suggests a spectrum when none exists.
 
 **Problem:** LLMs hide the actor or drop the subject entirely with lines like "No
 configuration file needed" or "The results are preserved automatically." Rewrite these
-when active voice makes the sentence clearer and more direct. Contractions help — they
+when active voice makes the sentence clearer and more direct. Contractions help; they
 also cut the formal AI register.
 
 **Before:**
 > No configuration file needed. The results are preserved automatically.
 
 **After:**
-> You don't need a config file — the system saves results automatically.
+> You don't need a config file; the system saves results automatically.
 
 ---
 
@@ -257,7 +257,7 @@ also cut the formal AI register.
 
 **Problem:** LLMs use em dashes (—) more than humans, mimicking "punchy" sales writing.
 Most of these can be rewritten more cleanly with commas, periods, or parentheses. A few
-em dashes per document are fine — three per paragraph aren't.
+em dashes per document are fine; three per paragraph aren't.
 
 **Before:**
 > The term is primarily promoted by Dutch institutions—not by the people themselves. You
@@ -273,7 +273,7 @@ em dashes per document are fine — three per paragraph aren't.
 
 ### 15. Mechanical boldface emphasis
 
-**Problem:** AI bolds phrases reflexively — usually the first noun phrase or an
+**Problem:** AI bolds phrases reflexively, usually the first noun phrase or an
 acronym expansion. In published prose, boldface should be rare.
 
 **Before:**
@@ -353,7 +353,7 @@ Straight quotes are the norm in code, plain text, and most web copy.
 Would you like..., let me know, here is a..., Great question!, That's an excellent
 point, What a thoughtful question.
 
-**Problem:** Text meant as chatbot correspondence leaks into content — either openers
+**Problem:** Text meant as chatbot correspondence leaks into content: either openers
 ("Here is an overview...") or flattery ("Great question!"). Both mark the text as
 machine-emitted.
 
@@ -435,13 +435,13 @@ possibly"). One hedge is enough. Usually zero is enough.
 ### 25. Too-perfect compound-modifier hyphenation
 
 **Watch for:** identical hyphenation of the same compound modifier every single time it
-appears across a document — "cross-functional", "high-quality", "data-driven",
+appears across a document: "cross-functional", "high-quality", "data-driven",
 "decision-making", "real-time", "long-term", "end-to-end".
 
 **Problem:** AI hyphenates compound modifiers with machine consistency. Real writers
-drift — sometimes they hyphenate, sometimes they don't, sometimes they rewrite around
+drift: sometimes they hyphenate, sometimes they don't, sometimes they rewrite around
 the construction entirely. This is a *variation* tell, not a grammar rule. Hyphenating
-compound modifiers before a noun is correct in edited prose — the issue is doing it
+compound modifiers before a noun is correct in edited prose; the issue is doing it
 identically every time.
 
 **How to fix:** don't globally un-hyphenate. Instead, vary usage across the piece.
@@ -449,7 +449,7 @@ Rewrite some instances to avoid the compound entirely. A few open compounds in p
 position ("the team was cross functional") or recast as verbs or clauses ("updates in
 real time" instead of "real-time updates") break the pattern without breaking grammar.
 
-**Before (AI pattern — every compound hyphenated identically):**
+**Before (AI pattern, every compound hyphenated identically):**
 > The cross-functional team delivered a high-quality, data-driven report on our
 > client-facing tools. Their decision-making process was well-known for being thorough
 > and detail-oriented.

@@ -78,7 +78,9 @@ This is compatible with the inverted-pyramid guidance in `SKILL.md`: lead with t
 
 **Weak:** "Jordan is an exceptionally dedicated person who gives 100% effort to every project he undertakes."
 
-**Strong:** "Jordan built the payments infrastructure at Stripe from 2019 to 2022, where he led the team that processed $40B in annual transaction volume. Before that, he was the second engineer at a YC-backed company that was acquired by Square in 2018."
+**Strong:** "Jordan built the payments infrastructure at Corvid Pay from 2019 to 2022, where he led the team that processed $40B in annual transaction volume. Before that, he was the second engineer at Ledgerline, which was acquired in 2018."
+
+(Company names in these examples are fictional. In a real answer, name the founder's actual employers; verifiable names are part of what makes the answer strong. Never invent or inflate a credential.)
 
 **The "most impressive achievement" question (YC-specific):** This is the most important question on the YC application. It is deliberately open-ended. It could be academic, technical, personal, or anything else. What matters is magnitude, not category. If nothing stands out, go with whatever you did that was hardest, preferably hardest intellectually. Internships at top companies count.
 
@@ -133,9 +135,9 @@ This is compatible with the inverted-pyramid guidance in `SKILL.md`: lead with t
 
 (This does not answer the second half of the question.)
 
-**Strong:** "We charge a $1,200 annual subscription. With 749,404 restaurants in the US, we can reach $749M in annual revenue in the US. With 1.5 million restaurants in Europe, we can generate $1.8B per year in Europe."
+**Strong:** "We charge a $1,200 annual subscription. With 749,404 restaurants in the US, we can reach $899M in annual revenue in the US. With 1.5 million restaurants in Europe, we can generate $1.8B per year in Europe."
 
-Founders fail this question more than any other. For the full method (defining and counting the buyer from real data, segmenting buyers that pay differently, sanity-checking against a top-down figure) and the option to research the buyer count and price via web search, read `references/bottom-up-tam.md`.
+Founders fail this question more than any other. For the full method (defining and counting the buyer from real data, segmenting buyers that pay differently, sanity-checking against a top-down figure) and the option to research the buyer count and price via web search, read `bottom-up-tam.md`.
 
 ---
 
@@ -211,7 +213,7 @@ The more specific, the better. This is your Ideal Customer Profile.
 - Why will you beat the natural monopolies in this space?
 - Fill in the blank: "We are the only company in the world that _____ for our customers."
 
-**Most early software startups have no durable moat on day one, and that is normal.** Real technology moats mostly live in hardware, deeptech, and techbio. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." This is where software founders bluff hardest. For the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints, read `references/moats.md`.
+**Most early software startups have no durable moat on day one, and that is normal.** Real technology moats mostly live in hardware, deeptech, and techbio. The strongest answer names the one defensibility being built first and the path to deeper ones, not a faked moat. Watch for the three false moats founders reach for: "proprietary data," "AI," and "first-mover advantage." This is where software founders bluff hardest. For the data-moat fallacy, the real defensibilities, the chokepoint and workflow-embedding lens, and the option to research the customer's chokepoints, read `moats.md`.
 
 ---
 

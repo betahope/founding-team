@@ -9,7 +9,7 @@ The user triggered voice calibration if they said something like:
 
 - "Humanize this text. Here's a sample of my writing for voice matching: [sample]"
 - "Humanize this text. Use my writing style from [file path] as a reference."
-- "Match my voice — I've written like this before: [sample]"
+- "Match my voice. I've written like this before: [sample]"
 
 Or they pointed you at a file containing past writing. When in doubt, ask.
 
@@ -30,7 +30,7 @@ Read the sample before writing anything. Note:
 
 ## How to apply it
 
-Don't just remove AI patterns — replace them with patterns drawn from the sample.
+Don't just remove AI patterns; replace them with patterns drawn from the sample.
 
 - If the sample has short sentences, don't produce long ones.
 - If the sample uses "stuff" and "things," don't upgrade to "elements" and "components."
@@ -44,6 +44,6 @@ is the target, not generic humanness.
 
 ## When no sample is provided
 
-Fall back to the defaults in SKILL.md — natural, varied rhythm, opinionated where
+Fall back to the defaults in SKILL.md: natural, varied rhythm, opinionated where
 appropriate, specific over vague. Strip AI patterns. Match the register implied by
 the input's context.

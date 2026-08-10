@@ -236,7 +236,9 @@ The why-now slide is essential whenever the founder's pitch is "this is possible
 
 **Weak:** "Jordan is an exceptionally dedicated and passionate person who is committed to solving this problem."
 
-**Strong:** "Jordan led the payments team at Stripe from 2019 to 2022, where she shipped the Stripe Terminal SDK now used by 200,000 merchants. Before that, she was the second engineer at Brex, acquired in 2018."
+**Strong:** "Jordan led the payments team at Corvid Pay from 2019 to 2022, where she shipped a card-terminal SDK now used by 200,000 merchants. Before that, she was the second engineer at Ledgerline, which was acquired in 2018."
+
+(Company names in these examples are fictional. On a real slide, name the founder's actual employers; verifiable names are part of what makes the bio strong. Never invent or inflate a credential.)
 
 ---
 
@@ -280,7 +282,7 @@ The ask for an accelerator is different from the ask for an investor. See `audie
 If vision was placed earlier in the deck (for example, right after the problem in a 5 to 10 minute live pitch), the closing slide becomes a calm sign-off with a single strong line, contact details, and a thank-you. Do not put vision on both the opening and the closing. Pick one.
 
 **What to avoid:**
-- Putting the tagline on this slide and calling it the vision. Different jobs. See `references/vision.md`.
+- Putting the tagline on this slide and calling it the vision. Different jobs. See `vision.md`.
 - A vision line in body-text sizing (24 to 32px) competing with a larger wordmark or tagline. If vision is on this slide, vision is the largest element.
 - "Thank you" alone with no contact details. Wasted real estate.
 - Recapping every previous slide.

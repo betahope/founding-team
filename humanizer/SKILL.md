@@ -28,7 +28,7 @@ guide, maintained by WikiProject AI Cleanup.
 
 Key insight from that page: "LLMs use statistical algorithms to guess what should come
 next. The result tends toward the most statistically likely result that applies to the
-widest variety of cases." That's why AI writing feels smoothed-over and genericized —
+widest variety of cases." That's why AI writing feels smoothed-over and genericized:
 the model is producing the statistical average of what a sentence looks like. Humanizing
 means putting specificity, rhythm, and a point of view back in.
 
@@ -61,7 +61,7 @@ it would help to see the full workflow applied to an essay.
 3. **Rewrite** to remove the patterns while preserving meaning, register, and voice.
 4. **Self-audit.** Re-read your draft and silently ask what still reads as AI-generated.
    Note any remaining tells internally, then revise to fix them. Do this as internal
-   thought — don't surface the audit as prose in your output unless the user explicitly
+   thought; don't surface the audit as prose in your output unless the user explicitly
    asked you to show your work.
 5. **Return** the rewritten text, sized to the input (see next section).
 
@@ -71,7 +71,7 @@ Match your effort to the input. A button label does not need an audit report, an
 over-scaffolded output for short copy is its own tell.
 
 - **Snippet** (button, headline, heading, one sentence): return the cleaned rewrite.
-  Nothing else. If the input is 5 words, the output should not be 12 — tightening is
+  Nothing else. If the input is 5 words, the output should not be 12; tightening is
   almost always the right move.
 - **Paragraph** (email, product description, bio, landing section): return the rewrite.
   Optionally one sentence noting what you changed, only if it actually helps the user.
@@ -84,24 +84,24 @@ over-scaffolded output for short copy is its own tell.
 
 Use this as a scanning checklist. Full details in `references/patterns.md`.
 
-**Content** — what AI over-claims:
-1. Significance inflation — "testament", "pivotal moment", "evolving landscape"
-2. Notability puffery — name-dropping outlets, follower counts
-3. Superficial -ing analyses — "highlighting", "reflecting", "contributing to"
-4. Promotional language — "nestled", "vibrant", "breathtaking", "must-visit"
-5. Vague attributions — "experts argue", "industry observers have noted"
+**Content** (what AI over-claims):
+1. Significance inflation: "testament", "pivotal moment", "evolving landscape"
+2. Notability puffery: name-dropping outlets, follower counts
+3. Superficial -ing analyses: "highlighting", "reflecting", "contributing to"
+4. Promotional language: "nestled", "vibrant", "breathtaking", "must-visit"
+5. Vague attributions: "experts argue", "industry observers have noted"
 6. Formulaic "Challenges and Future Prospects" sections
 
-**Language and grammar** — how AI phrases things:
-7. High-frequency AI vocabulary — delve, tapestry, crucial, underscore, landscape
-8. Copula avoidance — "serves as" / "stands as" instead of "is"
-9. Negative parallelism — "not just X, it's Y" — and tailing negations ("no guessing")
-10. Rule of three — forced triplets
-11. Elegant variation — needless synonym cycling for the same subject
-12. False ranges — "from X to Y" where X and Y aren't on a scale
-13. Passive voice and subjectless fragments — "No configuration file needed"
+**Language and grammar** (how AI phrases things):
+7. High-frequency AI vocabulary: delve, tapestry, crucial, underscore, landscape
+8. Copula avoidance: "serves as" / "stands as" instead of "is"
+9. Negative parallelism ("not just X, it's Y") and tailing negations ("no guessing")
+10. Rule of three: forced triplets
+11. Elegant variation: needless synonym cycling for the same subject
+12. False ranges: "from X to Y" where X and Y aren't on a scale
+13. Passive voice and subjectless fragments: "No configuration file needed"
 
-**Style** — surface formatting tells:
+**Style** (surface formatting tells):
 14. Em dash overuse
 15. Mechanical boldface emphasis
 16. Inline-header vertical lists (bold label + colon + restatement)
@@ -109,20 +109,20 @@ Use this as a scanning checklist. Full details in `references/patterns.md`.
 18. Emojis in headings and bullets
 19. Curly quotation marks (“ ” vs " ")
 
-**Communication** — leaked chatbot register:
-20. Collaborative artifacts and sycophancy — "Here is...", "I hope this helps",
+**Communication** (leaked chatbot register):
+20. Collaborative artifacts and sycophancy: "Here is...", "I hope this helps",
     "Great question!", "You're absolutely right"
-21. Knowledge-cutoff disclaimers — "while specific details are limited"
+21. Knowledge-cutoff disclaimers: "while specific details are limited"
 
-**Filler and hedging** — padding:
-22. Filler phrases — "in order to", "at this point in time"
-23. Excessive hedging — "could potentially possibly"
-24. Generic positive conclusions — "the future looks bright", "exciting times lie ahead"
-25. Too-perfect compound-modifier hyphenation — every "cross-functional", "data-driven",
+**Filler and hedging** (padding):
+22. Filler phrases: "in order to", "at this point in time"
+23. Excessive hedging: "could potentially possibly"
+24. Generic positive conclusions: "the future looks bright", "exciting times lie ahead"
+25. Too-perfect compound-modifier hyphenation: every "cross-functional", "data-driven",
     "real-time" hyphenated identically across a document
-26. Persuasive authority tropes — "the real question is", "at its core"
-27. Signposting — "let's dive in", "here's what you need to know"
-28. Fragmented headers — heading + one-line restatement + real content
+26. Persuasive authority tropes: "the real question is", "at its core"
+27. Signposting: "let's dive in", "here's what you need to know"
+28. Fragmented headers: heading + one-line restatement + real content
 
 ## Personality and soul
 
@@ -138,13 +138,13 @@ obvious as slop. Good writing has a human behind it.
 
 ### How to add voice:
 
-- **Have opinions.** Don't just report — react. "I genuinely don't know how to feel
+- **Have opinions.** Don't just report. React. "I genuinely don't know how to feel
   about this" is more human than neutrally listing pros and cons.
 - **Vary rhythm.** Short punchy sentences. Then longer ones that take their time getting
   where they're going. Mix it up.
 - **Acknowledge complexity.** Real humans have mixed feelings. "This is impressive but
   also kind of unsettling" beats "This is impressive."
-- **Use "I" when it fits.** First person isn't unprofessional — it's honest. "I keep
+- **Use "I" when it fits.** First person isn't unprofessional, it's honest. "I keep
   coming back to..." signals a real person thinking.
 - **Let some mess in.** Perfect structure feels algorithmic. Tangents, asides, and
   half-formed thoughts are human.

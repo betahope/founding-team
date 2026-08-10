@@ -24,7 +24,7 @@ A bottom-up TAM is built from the ground up: count the real buyers, multiply by 
 
 ## Worked example
 
-Annual subscription of $1,200. US: 749,404 restaurants, so roughly $749.4M. Europe: 1.5M restaurants, so roughly $1.8B. The strength here is that both the buyer count and the price are concrete and checkable, not "the food-tech market is huge."
+Annual subscription of $1,200. US: 749,404 restaurants, so roughly $899M. Europe: 1.5M restaurants, so roughly $1.8B. The strength here is that both the buyer count and the price are concrete and checkable, not "the food-tech market is huge."
 
 ## Common mistakes to flag
 
