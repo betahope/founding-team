@@ -14,6 +14,12 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.13.1] - 2026-08-10
+
+### Changed
+
+- **The GitHub repo is now `betahope/cofounder-team`.** The rename completes the naming cleanup started in 0.13.0: repo, folder, README title, and skill names all say cofounder-team now. Every repo URL in `README.md` and `claude-ai-project-instructions-template.md` points at the new address. Old `founding-team` links keep working through GitHub's redirect, and existing clones need no action (the redirect covers git operations too).
+
 ## [0.13.0] - 2026-08-10
 
 The "10x" release: two new capabilities (a team skill and shared company memory), a smarter humanizer, and a round of content, tooling, and consistency upgrades across the bundle.

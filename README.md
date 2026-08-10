@@ -23,7 +23,7 @@ Pick the path that matches where you work.
 Works on macOS, Linux, and Windows. Open a terminal and run:
 
 ```
-git clone --depth 1 https://github.com/betahope/founding-team.git ~/.cofounder-team && cd ~/.cofounder-team && bash ./setup
+git clone --depth 1 https://github.com/betahope/cofounder-team.git ~/.cofounder-team && cd ~/.cofounder-team && bash ./setup
 ```
 
 That command does three things: it clones this repo to `~/.cofounder-team`, then builds the skills and links each one into `~/.claude/skills/` (where Claude Code looks for personal skills), then prints a summary. The build is plain bash and needs nothing extra installed.
@@ -36,7 +36,7 @@ After it finishes, **start a new Claude Code session** so the skills load.
 
 Works on any OS, no terminal needed.
 
-1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest).
+1. Go to the [latest release](https://github.com/betahope/cofounder-team/releases/latest).
 2. Download the `.zip` for each skill you want (jack, maya, priya, dan, team, pitch-deck-coach, startup-application-coach, humanizer).
 3. In Claude.ai, open **Customize → Skills** from the left sidebar, click **Upload**, and drop each zip in.
 
@@ -50,7 +50,7 @@ If you are using the skills inside a Claude.ai project, the repo also includes a
 
 ChatGPT supports the same Agent Skills standard, so the release zips work there too. Tested with this bundle.
 
-1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest) and download the `.zip` for each skill you want.
+1. Go to the [latest release](https://github.com/betahope/cofounder-team/releases/latest) and download the `.zip` for each skill you want.
 2. In ChatGPT, open **Plugins** in the sidebar and switch to the **Skills** tab, or go straight to [chatgpt.com/skills](https://chatgpt.com/skills).
 3. Click the **+** button, choose **Upload from your computer**, and pick a zip. ChatGPT scans each skill on upload and it becomes available right after.
 
@@ -58,7 +58,7 @@ To upgrade later, download the newer zips and upload them again, the same as on 
 
 ### Install in other tools
 
-Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and dozens of other tools also support Agent Skills. Download the zips from the [latest release](https://github.com/betahope/founding-team/releases/latest), unzip them, and put each skill folder where your tool keeps skills (its docs will say where, and [agentskills.io](https://agentskills.io) links each tool's setup guide). We build and test on Claude and ChatGPT, so in other tools treat the skills as expected to work rather than guaranteed. If one misbehaves, [open an issue](https://github.com/betahope/founding-team/issues).
+Cursor, OpenAI Codex, GitHub Copilot, Gemini CLI, and dozens of other tools also support Agent Skills. Download the zips from the [latest release](https://github.com/betahope/cofounder-team/releases/latest), unzip them, and put each skill folder where your tool keeps skills (its docs will say where, and [agentskills.io](https://agentskills.io) links each tool's setup guide). We build and test on Claude and ChatGPT, so in other tools treat the skills as expected to work rather than guaranteed. If one misbehaves, [open an issue](https://github.com/betahope/cofounder-team/issues).
 
 ## The skills
 
@@ -96,7 +96,7 @@ Inside any Claude Code session, run:
 
 Claude.ai has no in-app upgrade flow for personal skills. To get the newest version:
 
-1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest) and check the version number against what you have installed.
+1. Go to the [latest release](https://github.com/betahope/cofounder-team/releases/latest) and check the version number against what you have installed.
 2. Download the updated zips and re-upload them in **Customize → Skills** (in the left sidebar). Claude.ai will replace the existing skill of the same name.
 3. The release notes on each release list what changed, pulled from `CHANGELOG.md`.
 
