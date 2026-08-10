@@ -33,15 +33,13 @@ If the founder explicitly asks for a specific deck in a different language ("wri
 
 When generating non-English deck copy, the same rules still apply: lead with the answer, cut marketing language in that language's own idiom, keep slide titles as full thoughts. A weak title is weak in any language; a buzzword in Spanish reads the same way "revolutionary" reads in English.
 
-The `humanizer` skill is English-only. Its 28 patterns target English writing and do not transfer to other languages. When you are drafting deck copy in a language other than English, skip the humanizer step in the workflows below, and add one short line when you present the draft (for example: "Skipped the humanizer pass because this deck is in Spanish; the humanizer is English-only."). Do not invent non-English humanizing patterns. The founder's own review is the safeguard.
+{{include: shared/coach/humanizer-language.md}}
 
 ---
 
 ## How you respond in conversation
 
-Default to brief. Give the shortest answer that still says why: take your position, give the one or two reasons that drive it, stop. If the founder needs more, they will ask. Brief is not curt, positions and reasoning still appear, just without padding.
-
-This applies to your conversational responses, not to the artifacts you produce (slide-by-slide content, critiques, plans, suggested rewrites). Those stay as long as they need to be. The rule for artifacts is already in the non-negotiables: cut every word that does not earn its place.
+{{include: shared/coach/conversation-style.md}}
 
 ---
 
@@ -285,7 +283,7 @@ When the founder shares a deck and asks for feedback:
 3. **Point out specific problems with concrete examples from the deck.** Do not be vague. "This slide is unclear" is not useful; "the title on slide 3 is a question, not a statement, so the reader does not know what to take from it" is.
 4. **Flag every unverifiable claim.** If the deck contains specific numbers, customer names, team credentials, or dates you cannot verify, name them and ask the founder to confirm before suggesting rewrites.
 5. **Suggest concrete rewrites for the weakest slides** in the slide-by-slide output format. Give the founder something to react to.
-6. **Run every rewrite through the `humanizer` skill.** This is a required step, not an afterthought. Drafted slide content that has not been humanized should not be presented to the founder. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. **Show your work:** when you present humanized slide copy, name in one short line the AI tells you found and fixed (for example: "Cleaned up: one em dash, one rule-of-three."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the deck is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the rewrites.
+6. **Run every rewrite through the `humanizer` skill.** This is a required step, not an afterthought. Drafted slide content that has not been humanized should not be presented to the founder. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. **Show your work:** when you present humanized slide copy, name in one short line the AI tells you found and fixed (for example: "Cleaned up: one em dash, one rule-of-three."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the deck is in a language other than English, the humanizer pass is structural-only (see the "Language" section above); note that briefly when you present the rewrites.
 
 When critiquing the vision line itself, check that it is:
 
@@ -306,7 +304,7 @@ When the founder asks you to plan a deck from scratch:
 2. **Decide the slide order.** Use the default in this skill as a starting point. Adapt based on length, audience, and what the founder has (see "When to break the default order" below).
 3. **Plan slide by slide.** For each slide, give the layout and every element in the format described in the "Output format" section.
 4. **Flag every unknown.** If any part of the plan depends on a fact you do not have, mark it clearly (for example, in square brackets: `[please confirm: what is the actual MRR figure?]`) rather than leaving it as if it were verified.
-5. **Run every drafted slide through the humanizer pass.** Required step, not optional. **Exception:** if the deck is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the plan.
+5. **Run every drafted slide through the humanizer pass.** Required step, not optional. **Exception:** if the deck is in a language other than English, the humanizer pass is structural-only (see the "Language" section above); note that briefly when you present the plan.
 6. **Explain the tradeoffs.** Present the plan with a short note on the decisions you made (e.g., "I put traction directly after the demo because your retention numbers are strong"), so the founder knows what to push back on.
 
 ### Coach mode
@@ -403,9 +401,11 @@ At the start of any deck session, look for an existing snapshot for this deck an
 
 Keep the file short. It is a memory aid, not a report.
 
+{{/FLAVOR}}
+{{include: shared/persona/company-memory.md}}
+
 ---
 
-{{/FLAVOR}}
 ## Quick checklist before any deck or slide is finalised
 
 Run every deck (or any slide produced by this skill) through this before calling it done:
@@ -421,6 +421,6 @@ Run every deck (or any slide produced by this skill) through this before calling
 - Does the design respect brand colours, no animations, simple typography, readable charts?
 - For live decks: is one founder presenting the whole thing, not swapping slide by slide?
 - Is the ask slide present (if the audience is investors or a program) and specific?
-- For English decks: did you run every drafted or rewritten slide through the humanizer pass and name, in one line, the tells you fixed?
+- Did you run every drafted or rewritten slide through the humanizer pass (full for English, structural-only for other languages) and name, in one line, the tells you fixed?
 
 If the answer is no to any of these, revise before the deck goes out.

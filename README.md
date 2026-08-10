@@ -1,18 +1,18 @@
-# The Founding Team
+# The Co-Founder Team
 
-*Your AI founding team, wherever you work: Claude, ChatGPT, and any tool that supports Agent Skills.*
+*Your AI co-founder team, wherever you work: Claude, ChatGPT, and any tool that supports Agent Skills.*
 
 A set of portable [Agent Skills](https://agentskills.io) that give any founder a virtual co-founding team: a sales/marketing/growth co-founder, a product/UX co-founder, a creative/social co-founder, and a fundraising co-founder, plus a pitch deck coach, a startup application coach, and a humanizer that strips AI tells out of any draft.
 
 They work as a team, not as four tools you switch between. More on that below.
 
-The personas and coaches respond in whichever language you write to them in, and generate any artifacts (pitch decks, application answers, content drafts) in that language by default. You can override per-artifact ("draft this in English"). The `humanizer` stays English-only and is automatically skipped on non-English drafts.
+The personas and coaches respond in whichever language you write to them in, and generate any artifacts (pitch decks, application answers, content drafts) in that language by default. You can override per-artifact ("draft this in English"). The `humanizer` runs in full on English drafts; on other languages it does a lighter structural-only pass, since its wording patterns are English-specific.
 
 ## How the team works together
 
 These four are a team, not four separate advisors. Each co-founder knows the others by name and domain, knows where its own expertise ends, and pulls in whoever is needed rather than guessing outside its lane. Ask Jack something that turns on product design and he brings Maya in. Raise a fundraising angle mid-conversation and Dan steps up. When someone hits the edge of what they know, they say so and point you to the right co-founder instead of bluffing.
 
-This is built into the skills, not bolted on. Every persona carries a Boundaries section that names the others and spells out when to hand off, so the team stays in its lanes without you having to direct traffic. On Claude.ai, the project instructions template takes it further: the co-founders weigh in together inside a single reply, each voice attributed by name.
+This is built into the skills, not bolted on. Every persona carries a Boundaries section that names the others and spells out when to hand off, so the team stays in its lanes without you having to direct traffic. And when a question deserves more than one voice, the `team` skill convenes them: say "ask the team" (or `/team` in Claude Code) and the right co-founders answer together in a single reply, each voice attributed by name, ending in one clear recommendation. On Claude.ai, the project instructions template adds the same behavior at the project level.
 
 ## Install
 
@@ -37,7 +37,7 @@ After it finishes, **start a new Claude Code session** so the skills load.
 Works on any OS, no terminal needed.
 
 1. Go to the [latest release](https://github.com/betahope/founding-team/releases/latest).
-2. Download the `.zip` for each skill you want (jack, maya, priya, dan, pitch-deck-coach, startup-application-coach, humanizer).
+2. Download the `.zip` for each skill you want (jack, maya, priya, dan, team, pitch-deck-coach, startup-application-coach, humanizer).
 3. In Claude.ai, open **Customize → Skills** from the left sidebar, click **Upload**, and drop each zip in.
 
 The `cofounder-team-upgrade` skill is not included in the Claude.ai release zips because it touches local filesystem paths that do not exist on Claude.ai. On Claude.ai, upgrading is a matter of downloading the new zips from the latest release and re-uploading them.
@@ -68,6 +68,7 @@ Each skill is a folder with a `SKILL.md` inside. Once installed, trigger them by
 - **maya** — Product and UX co-founder. Roadmap, user research, design, activation, retention, product analytics.
 - **priya** — Creative, content, and social media co-founder. Visual content, video, social strategy, campaign creative, brand visual execution.
 - **dan** — Fundraising, capital strategy, and investor relations co-founder. Pre-seed to Series A: round structure, SAFEs, cap table, pitch narrative, investor process.
+- **team** — Convenes the co-founders in one reply for questions that span domains and for big decisions. Each voice named, one recommendation at the end.
 - **pitch-deck-coach** — Helps you plan, critique, and rewrite pitch decks for investors, accelerators, demo days, customers, or partners.
 - **startup-application-coach** — Helps you write stronger applications to accelerators, incubators, and pre-accelerators (YC, Techstars, EF, Antler, and others).
 - **humanizer** — Strips AI tells out of any user-facing copy. The other skills call this one before showing you a draft.

@@ -4,9 +4,13 @@ The question-by-question guide covers what is common across programs. This file 
 
 Only reference a section when the founder has named that specific program or asked about it.
 
+**Freshness rule.** Program details change between batches: acceptance stats, question wording, character limits, batch cadence, and interview formats all move. The figures below were accurate when written (mid-2026). Wherever this file and the program's live application or website disagree, trust the live version, and tell the founder that is what you are doing.
+
 ---
 
 ## Y Combinator
+
+YC runs four batches a year (Winter, Spring, Summer, Fall), so there is usually an application window close by. Check ycombinator.com/apply for the current deadline; applying early in a window is better than applying at the buzzer.
 
 ### How YC reads applications
 
@@ -167,7 +171,7 @@ The Techstars guide emphasises two things worth borrowing:
 
 ### How Speedrun reads applications
 
-Speedrun receives many thousands of applications per cycle and advances a small fraction. The most recent published cycle (SR006) accepted under 0.4% of more than 19,000 applicants. Reviewers read fast and decide fast. Strong signals that sit at the bottom of an application often go unread. Lead with them.
+Speedrun receives many thousands of applications per cycle and advances a small fraction. The most recent cycle published when this was written (SR006) accepted under 0.4% of more than 19,000 applicants. Reviewers read fast and decide fast. Strong signals that sit at the bottom of an application often go unread. Lead with them.
 
 ### What Speedrun specifically weighs
 

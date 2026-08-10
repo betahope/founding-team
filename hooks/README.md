@@ -10,9 +10,13 @@ work exactly the same.
 A safety net for the humanizer pass. The persona and coach skills already tell
 Claude to run the `humanizer` skill on user-facing copy. But a skill only helps
 when it is invoked. This hook runs automatically after Claude writes or edits a
-text file, scans it for a few obvious AI tells (em dashes, curly quotes, a short
-list of high-frequency AI words, "not just X" openers), and if it finds any, asks
-Claude to run the humanizer and say what it fixed.
+text file and scans **only the text Claude just wrote** (never the rest of the
+file, so old text does not re-trigger it on every edit). It looks for a few
+obvious AI tells: multiple em dashes, "not just X" openers, "serves as" / "stands
+as", and a list of high-frequency AI words kept in sync with the humanizer's
+pattern catalog. It speaks up only when it sees at least two kinds of tell (or a
+pile-up of AI words), and then asks Claude to run the humanizer and say what it
+fixed.
 
 It is a **heuristic**, not the humanizer skill. It catches easy surface tells only.
 It is deliberately conservative to avoid false alarms, and it exits quietly if

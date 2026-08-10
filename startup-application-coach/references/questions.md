@@ -76,11 +76,7 @@ This is compatible with the inverted-pyramid guidance in `SKILL.md`: lead with t
 - Listing the current startup as the "impressive achievement"
 - Vague team descriptions that do not say who does what
 
-**Weak:** "Jordan is an exceptionally dedicated person who gives 100% effort to every project he undertakes."
-
-**Strong:** "Jordan built the payments infrastructure at Corvid Pay from 2019 to 2022, where he led the team that processed $40B in annual transaction volume. Before that, he was the second engineer at Ledgerline, which was acquired in 2018."
-
-(Company names in these examples are fictional. In a real answer, name the founder's actual employers; verifiable names are part of what makes the answer strong. Never invent or inflate a credential.)
+{{include: shared/coach/team-bio-example.md}}
 
 **The "most impressive achievement" question (YC-specific):** This is the most important question on the YC application. It is deliberately open-ended. It could be academic, technical, personal, or anything else. What matters is magnitude, not category. If nothing stands out, go with whatever you did that was hardest, preferably hardest intellectually. Internships at top companies count.
 
@@ -135,7 +131,7 @@ This is compatible with the inverted-pyramid guidance in `SKILL.md`: lead with t
 
 (This does not answer the second half of the question.)
 
-**Strong:** "We charge a $1,200 annual subscription. With 749,404 restaurants in the US, we can reach $899M in annual revenue in the US. With 1.5 million restaurants in Europe, we can generate $1.8B per year in Europe."
+{{include: shared/coach/tam-strong-example.md}}
 
 Founders fail this question more than any other. For the full method (defining and counting the buyer from real data, segmenting buyers that pay differently, sanity-checking against a top-down figure) and the option to research the buyer count and price via web search, read `bottom-up-tam.md`.
 
@@ -187,6 +183,12 @@ The more specific, the better. This is your Ideal Customer Profile.
 
 **Bonus signal: have you met the players?** Beyond listing competitors, having actually spoken with operators, founders, and analysts in the space is a strong signal that you have done the work. Reviewers can usually tell the difference between a competitor list assembled from a Google search and one assembled from real conversations. Where you have those conversations, name them.
 
+**Weak:** "We have no real competitors. No one else is doing exactly what we do."
+
+**Strong:** "Direct: InspectPrep and KitchenScore, both venture-backed, both selling inspection-prep software to multi-location chains. Indirect: paper checklists and doing nothing until the inspector calls, which is what most single-location owners do today. Potential: the POS platforms already installed in every restaurant could add this as a feature, though it sits far from their core product."
+
+(Product names in these examples are fictional. In a real answer, name the actual competitors the founder considers relevant; never guess them on the founder's behalf.)
+
 ---
 
 ## What is your competitive advantage?
@@ -236,6 +238,10 @@ The more specific, the better. This is your Ideal Customer Profile.
 - Are you solving an existing problem in a new way that was impossible before?
 - What changed recently that made this viable?
 
+**Weak:** "AI is transforming every industry, and food service is next. The time to act is now."
+
+**Strong:** "In January our state moved restaurant inspection reports to a public API. For the first time, the inspection history that predicts a failing grade is machine-readable. Two years ago this product was impossible to build; today we are the first tool built on that data."
+
 ---
 
 ## What is your customer acquisition strategy?
@@ -243,7 +249,7 @@ The more specific, the better. This is your Ideal Customer Profile.
 **What it is really asking:** How are you going to get to your first meaningful number of customers, and can you do it without burning infinite money?
 
 **What good looks like:**
-- A concrete path to the first 1,000 users or $2.5M in revenue
+- A concrete path to the first meaningful number, whatever that is at your stage (the first 100 users, the first 20 paying customers, the first $100K)
 - Channels you can execute on, not theoretical ones
 - Something you can do better, cheaper, or faster than a well-funded competitor could replicate
 - Evidence you have already started (warm network, communities you are active in, early traction)
@@ -253,6 +259,10 @@ The more specific, the better. This is your Ideal Customer Profile.
 - Channels that require large budgets you do not have
 - Vague "we will go viral" claims
 - Unrealistic conversion assumptions
+
+**Weak:** "We will reach restaurant owners through content marketing, SEO, social media, paid ads, and strategic partnerships."
+
+**Strong:** "County health departments publish every scheduled inspection 30 days out. Each month we write to the restaurants on next month's list with their own public inspection history attached. 12% book a demo, because we reach them in the exact week they care. A funded competitor could copy the tactic, but we have already built the data pipeline for 14 counties."
 
 ---
 
@@ -269,6 +279,10 @@ The more specific, the better. This is your Ideal Customer Profile.
 - Vague goals ("grow the business", "get more users")
 - Only listing feature launches without outcomes
 - Milestones that cannot be measured
+
+**Weak:** "Grow our user base, keep improving the product, and raise a funding round."
+
+**Strong:** "By March: 50 paying restaurants in our home county (22 today). By June: prove the playbook transfers by opening two more counties and reaching 20 paying restaurants in each. Learning milestone: if fewer than half of trial restaurants run a second self-inspection within a month, the retention loop is not working, and we fix that before opening new counties."
 
 ---
 

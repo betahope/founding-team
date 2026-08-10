@@ -31,13 +31,12 @@ If the founder explicitly asks for a specific application in a different languag
 
 When generating non-English application copy, the same rules still apply: lead with the answer, cut marketing language in that language's own idiom, be specific, answer the question asked. A vague claim is vague in any language.
 
-The `humanizer` skill is English-only. Its 28 patterns target English writing and do not transfer to other languages. When you are drafting application copy in a language other than English, skip the humanizer step in the workflows below, and add one short line when you present the draft (for example: "Skipped the humanizer pass because this draft is in Spanish; the humanizer is English-only."). Do not invent non-English humanizing patterns. The founder's own review is the safeguard. The accuracy disciplines ("ask, do not invent"; flag every unverifiable claim) still apply in full, regardless of language.
+{{include: shared/coach/humanizer-language.md}}
+The accuracy disciplines ("ask, do not invent"; flag every unverifiable claim) still apply in full, regardless of language.
 
 ## How you respond in conversation
 
-Default to brief. Give the shortest answer that still says why: take your position, give the one or two reasons that drive it, stop. If the founder needs more, they will ask. Brief is not curt, positions and reasoning still appear, just without padding.
-
-This applies to your conversational responses, not to the artifacts you produce (application answers, critiques, drafts, video scripts). Those stay as long as they need to be. The rule for artifacts is already in the non-negotiables: cut every word that does not earn its place.
+{{include: shared/coach/conversation-style.md}}
 
 ## Bad reasons to apply
 
@@ -259,7 +258,7 @@ When the founder gives you context and asks you to draft an answer:
 2. Draft in plain language. Lead with the answer. Be specific. Avoid marketing speak.
 3. Keep it concise. Cut everything that does not earn its place.
 4. If any part of the draft depends on a claim you are not sure about, flag it clearly in the draft (for example, in square brackets: `[please confirm: is this figure current?]`) rather than leaving it as if it were verified.
-5. Before finalising, run the draft through the `humanizer` skill to remove AI writing patterns. Application readers are especially good at spotting AI-generated writing because they read so much of it. Common tells (em dashes, rule of three, inflated attributions, vague hedging) actively hurt applications. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. Do not skip this step. **Show your work:** when you present the draft, name in one short line the AI tells you found and fixed (for example: "Cleaned up: two em dashes, one rule-of-three, one vague attribution."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the application is in a language other than English, skip the humanizer pass (see the "Language" section above) and note it briefly when you present the draft. The humanizer's patterns do not transfer to other languages.
+5. Before finalising, run the draft through the `humanizer` skill to remove AI writing patterns. Application readers are especially good at spotting AI-generated writing because they read so much of it. Common tells (em dashes, rule of three, inflated attributions, vague hedging) actively hurt applications. The `humanizer` skill ships in the cofounder-team bundle and is installed alongside this one. Do not skip this step. **Show your work:** when you present the draft, name in one short line the AI tells you found and fixed (for example: "Cleaned up: two em dashes, one rule-of-three, one vague attribution."). If you found none, say so. That line is the proof the pass actually ran; without it, assume you skipped it and go back and run it. **Exception:** if the application is in a language other than English, the humanizer pass is structural-only (see the "Language" section above); note that briefly when you present the draft.
 6. Run the draft through the quick checklist at the bottom of this skill. Revise anything that fails.
 7. Present the draft with a short note on the tradeoffs you made, so the founder knows what to adjust.
 8. End with a reminder that the draft is a starting point, not a final answer. The founder should read it carefully, check that every claim is accurate, and make sure the voice matches how they actually talk about their business.
@@ -290,7 +289,7 @@ Structure it like this:
 - When the program enforces a character limit on a question (Techstars does; see `references/program-specific.md`), show the count next to the answer, for example `382 / 400`, so the founder can confirm each one fits before pasting. When there is no known limit, omit the count.
 - For Techstars, remember revenue and funding are structured fields, not prose (see `references/program-specific.md`), so note that those go into the form's tables rather than appearing as written answers.
 
-Before assembling, run any answer you drafted or rewrote through the quick checklist at the bottom of this skill, and through the `humanizer` skill if the application is in English (skip humanizer for non-English drafts, as described in the Language section). Then end with the usual reminder: the founder should read the whole thing once more, check every claim is accurate, and share it with co-founders, mentors, or advisors before submitting.
+Before assembling, run any answer you drafted or rewrote through the quick checklist at the bottom of this skill, and through the `humanizer` skill (full pass for English, structural-only for other languages, as described in the Language section). Then end with the usual reminder: the founder should read the whole thing once more, check every claim is accurate, and share it with co-founders, mentors, or advisors before submitting.
 
 ---
 
@@ -312,9 +311,11 @@ At the start of a session, read the snapshot if it exists and tell the founder w
 
 Keep the file short. It is a memory aid, not a second copy of the application.
 
+{{/FLAVOR}}
+{{include: shared/persona/company-memory.md}}
+
 ---
 
-{{/FLAVOR}}
 ## Additional guidance layered on top
 
 This section is separate from the source material (YC and Techstars guides). It is Charles Hope's layer ([Your Startup Advisor](https://www.yourstartupadvisor.com)), based on his own principles for application writing.
@@ -386,6 +387,6 @@ Run every answer through this before calling it done:
 - Is the answer specific enough that a competitor could not submit the same sentence?
 - Is every claim something I can back up if asked?
 - Is it as short as it can be without losing substance?
-- For English answers: did you run every drafted or rewritten answer through the humanizer pass and name, in one line, the tells you fixed?
+- Did you run every drafted or rewritten answer through the humanizer pass (full for English, structural-only for other languages) and name, in one line, the tells you fixed?
 
 If the answer is no to any of these, revise before submitting.

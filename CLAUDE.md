@@ -23,6 +23,7 @@ There is one small build step. The source `SKILL.md` files use a few templating 
 Each top-level directory containing a `SKILL.md` is a skill:
 
 - `jack`, `maya`, `priya`, `dan` — the four co-founder personas
+- `team` — convenes the personas in one multi-voice reply for cross-domain questions and big decisions
 - `pitch-deck-coach`, `startup-application-coach` — coaching skills
 - `humanizer` — called by the other skills before they return user-facing copy
 - `cofounder-team-upgrade` — runs the upgrade workflow
@@ -55,7 +56,7 @@ One source, two builds. The same skill ships to Claude Code (which can run hooks
 - `dist/claude-code/<skill>/` — the full version, including Claude-Code-only extras.
 - `dist/portable/<skill>/` — the portable version: words and reference notes only, nothing that needs a running program. Ships in the release zips, uploaded to Claude.ai, ChatGPT, or any other Agent Skills tool.
 
-`build` is plain bash and needs nothing installed (it runs on macOS's bash 3.2). It reads these directives in a source `SKILL.md` and in shared snippets:
+`build` is plain bash and needs nothing installed (it runs on macOS's bash 3.2). Every `.md` file in a skill folder is rendered through the directive pipeline: the `SKILL.md`, every file under `references/`, and shared snippets. So includes and flavor blocks work in reference files too, not just in `SKILL.md`. Non-markdown assets are copied as-is. The directives:
 
 - `{{include: shared/persona/foo.md}}` — insert another file here (also processed). Path is relative to the repo root. Must be alone on its line.
 - `{{set:NAME=value}}` — define a variable (the line is removed from output). Read from the source `SKILL.md` only.
@@ -63,7 +64,7 @@ One source, two builds. The same skill ships to Claude Code (which can run hooks
 - `{{FLAVOR:claude-code}} ... {{/FLAVOR}}` — keep this block only in the Claude Code build.
 - `{{FLAVOR:portable}} ... {{/FLAVOR}}` — keep this block only in the portable build.
 
-A source file with no directives is copied through unchanged, so most edits need no knowledge of the build at all.
+A source file with no directives renders byte-identical to a plain copy, so most edits need no knowledge of the build at all. One caveat: `{{set:NAME=value}}` variables are read only from the skill's `SKILL.md`, but they apply everywhere in that skill (including reference files and includes).
 
 **Golden rule: never break the portable build.** Anything that needs a hook, a helper agent, a script, or persistent memory is Claude Code only. Put it inside a `{{FLAVOR:claude-code}}` block so the portable build never sees it. Universal, words-only improvements need no flavor wrapper.
 
@@ -83,11 +84,12 @@ After any change to a source skill or a shared snippet, run `bash ./build` and c
 
 ## The cross-skill contract
 
-These skills are designed as a team that knows its own lanes. When editing any persona skill, keep three contracts intact:
+These skills are designed as a team that knows its own lanes. When editing any persona skill, keep four contracts intact:
 
 1. **Lane boundaries are mutual.** If `jack/SKILL.md` says "visual content sits with Priya" then `priya/SKILL.md` must own that lane. Boundaries described in one skill's "Boundaries" section should be reflected in the other skill's domain. Changing a lane in one place is a multi-file edit.
 2. **`humanizer` is called by the others.** Jack, Maya, Priya, Dan, and the two coaches all instruct themselves to run drafts through the `humanizer` skill before returning user-facing copy. If you change humanizer's name, location, or invocation pattern, update every caller. The four personas now share the humanizer workflow steps and the non-English rule from `shared/persona/humanizer-steps.md` and `shared/persona/humanizer-non-english.md`, so editing those two snippets updates all four personas at once. The two coaches keep their own inline copies (their structure differs), so they still need separate edits.
-3. **Language follows the user.** All persona and coach skills detect the founder's language from their messages and respond in that language. Generated artifacts (pitch decks, application answers, content drafts, financial model narratives) are produced in the same language unless the founder explicitly asks for a different language for a specific artifact ("make the deck in English"). Per-artifact overrides do not change the conversational language. Persona names (Jack, Maya, Priya, Dan) stay as-is. `humanizer` is English-only, so non-English drafts skip the humanizer pass and say so briefly. If you add a new persona or coach, it must follow this contract too.
+3. **Language follows the user.** All persona and coach skills detect the founder's language from their messages and respond in that language. Generated artifacts (pitch decks, application answers, content drafts, financial model narratives) are produced in the same language unless the founder explicitly asks for a different language for a specific artifact ("make the deck in English"). Per-artifact overrides do not change the conversational language. Persona names (Jack, Maya, Priya, Dan) stay as-is. `humanizer` runs in full on English drafts; on non-English drafts it does a structural-only pass (its lexical patterns are English-specific) and the caller notes that briefly. If you add a new persona or coach, it must follow this contract too.
+4. **Company memory is shared (Claude Code only).** The personas, the coaches, and the `team` skill all include `shared/persona/company-memory.md`, which defines one shared memory file (`./.cofounder-team/company.md` in the founder's project) holding the company basics. It is wrapped in a `{{FLAVOR:claude-code}}` block, so the portable build never sees it. A new skill that advises the company should include the same snippet.
 
 The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: persona intro → "How you think" → "Your domain" → "Boundaries" (which names the other co-founders by full name and explicitly hands work off) → "Companion skills" → "How you talk" → "Generating copy: mandatory humanizer pass" → "Context". Preserve this shape when editing — it's how the hand-offs stay reliable. A few of these blocks are now `{{include}}` directives resolved at build time (the co-founder intro, the humanizer steps, the non-English rule); the rendered shape is unchanged.
 

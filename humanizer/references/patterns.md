@@ -5,6 +5,12 @@ the underlying problem, and a before/after example.
 
 Numbering matches the index in SKILL.md.
 
+A note on the examples: some "after" rewrites include specifics (years, study names,
+counts) that are not in the "before" text. Those specifics are invented for
+illustration; they show what specificity looks like. When humanizing real copy, never
+introduce facts, numbers, names, or citations that are not in the source. Use a
+bracketed placeholder or ask instead.
+
 ---
 
 ## Content patterns
@@ -73,9 +79,9 @@ add fake depth. The phrase restates the sentence in vaguer, weightier terms.
 
 ### 4. Promotional language
 
-**Watch for:** boasts a, vibrant, rich (figurative), profound, enhancing its, showcasing,
-exemplifies, commitment to, natural beauty, nestled, in the heart of, groundbreaking
-(figurative), renowned, breathtaking, must-visit, stunning.
+**Watch for:** boasts a, bustling, vibrant, rich (figurative), profound, enhancing its,
+showcasing, exemplifies, commitment to, natural beauty, nestled, in the heart of,
+groundbreaking (figurative), renowned, breathtaking, must-visit, stunning.
 
 **Problem:** LLMs have serious trouble keeping a neutral tone, especially on
 culture/heritage/travel topics. The voice defaults to a tourism brochure.
@@ -133,10 +139,12 @@ conclusion. The section says nothing specific.
 
 ### 7. High-frequency AI vocabulary
 
-**Watch for:** actually, additionally, align with, crucial, delve, emphasizing, enduring,
-enhance, fostering, garner, highlight (verb), interplay, intricate/intricacies, key
-(adjective), landscape (abstract noun), pivotal, showcase, tapestry (abstract noun),
-testament, underscore (verb), valuable, vibrant.
+**Watch for:** actually, additionally, align with, crucial, delve, elevate, emphasizing,
+empower, enduring, enhance, fostering, game-changer, garner, highlight (verb), holistic,
+interplay, intricate/intricacies, key (adjective), landscape (abstract noun), leverage
+(verb), pivotal, robust, seamless/seamlessly, showcase, streamline, supercharge,
+tapestry (abstract noun), testament, underscore (verb), unlock (abstract), valuable,
+vibrant.
 
 **Problem:** These words appear far more frequently in post-2023 text. They often
 co-occur in the same sentence, compounding the effect.
@@ -290,7 +298,9 @@ acronym expansion. In published prose, boldface should be rare.
 ### 16. Inline-header vertical lists
 
 **Problem:** AI outputs lists where items start with a bolded label, a colon, and then
-a sentence that restates the label.
+a sentence that restates the label. A related tell: bullet lists where every item opens
+with the same shape (a bolded imperative verb, or the same first word), in perfect
+parallel. Real writers' lists are lumpier.
 
 **Before:**
 > - **User Experience:** The user experience has been significantly improved with a new interface.
@@ -464,7 +474,7 @@ real time" instead of "real-time updates") break the pattern without breaking gr
 ### 26. Persuasive authority tropes
 
 **Watch for:** The real question is, at its core, in reality, what really matters,
-fundamentally, the deeper issue, the heart of the matter.
+fundamentally, the deeper issue, the heart of the matter, here's the thing.
 
 **Problem:** LLMs use these phrases to pretend they're cutting through noise to some
 deeper truth. The sentence that follows usually just restates an ordinary point with

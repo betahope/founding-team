@@ -1,12 +1,13 @@
 #!/usr/bin/env bash
 # humanizer-slop-check — an OPTIONAL Claude Code PostToolUse hook.
 #
-# What it does: after Claude writes or edits a text file, this scans the file for
-# a handful of obvious "AI tells" (em dashes, a few high-frequency AI words, curly
-# quotes, negative-parallelism openers). If it finds any, it hands Claude a short
-# note listing them and asks it to run the `humanizer` skill. This is the safety
-# net for the case the article calls out: the worst copy slips through when nobody
-# invoked the humanizer at all.
+# What it does: after Claude writes or edits a text file, this scans the text
+# Claude just wrote (not the whole file) for a handful of obvious "AI tells":
+# multiple em dashes, negative-parallelism openers, "serves as", and a list of
+# high-frequency AI words synced with the humanizer's pattern catalog. If it sees
+# at least two kinds of tell, it hands Claude a short note listing them and asks
+# it to run the `humanizer` skill. This is the safety net for the case the article
+# calls out: the worst copy slips through when nobody invoked the humanizer at all.
 #
 # This is a HEURISTIC, not the humanizer skill. It only catches easy, surface-level
 # tells. The real cleanup is still the humanizer skill's job.

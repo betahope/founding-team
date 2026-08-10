@@ -153,7 +153,7 @@ For an emailed deck, screenshots are more workable because the reader can study 
 
 **Weak:** "We charge $100/month. The global pest control market is $25B."
 
-**Strong:** "We charge $1,200 per restaurant per year. There are 749,404 restaurants in the US. US TAM is $899M. There are 1.5M restaurants in Europe. European TAM is $1.8B."
+{{include: shared/coach/tam-strong-example.md}}
 
 ---
 
@@ -218,6 +218,26 @@ The why-now slide is essential whenever the founder's pitch is "this is possible
 
 ---
 
+## Go-to-market slide
+
+**What it is for:** Show how the company reaches and wins customers, and why that motion is repeatable. This slide is not in the default order in SKILL.md (the market and business model slide carries a light version of it). Give go-to-market its own slide in 10-minute and emailed decks, or whenever the acquisition story is one of the company's strongest cards.
+
+**What good looks like:**
+- One primary channel, described concretely: who is reached, how, and what it costs.
+- Evidence the motion already works at small scale (reply rates, demo bookings, pilot-to-paid conversion).
+- A reason this channel is hard for a well-funded competitor to copy.
+
+**What to avoid:**
+- A wall of every possible channel ("content, SEO, paid, partnerships, PR"). Listing five channels says the founder has not found one that works.
+- Theoretical channels with no evidence behind them.
+- CAC and LTV figures computed from a handful of customers presented as stable economics. Small-sample numbers are fine if labelled as early.
+
+**Weak:** "We will acquire customers through content marketing, social media, paid advertising, and strategic partnerships."
+
+**Strong:** "County health departments publish next month's inspection schedule. We write to every restaurant on it with their own public inspection history attached; 12% book a demo. One channel, already working, built on a data pipeline a competitor would need a year of records requests to rebuild."
+
+---
+
 ## Team slide
 
 **What it is for:** Show that this team can build the company.
@@ -234,11 +254,7 @@ The why-now slide is essential whenever the founder's pitch is "this is possible
 - Listing the current startup as the founder's "impressive achievement."
 - Vague role descriptions ("we all do a bit of everything").
 
-**Weak:** "Jordan is an exceptionally dedicated and passionate person who is committed to solving this problem."
-
-**Strong:** "Jordan led the payments team at Corvid Pay from 2019 to 2022, where she shipped a card-terminal SDK now used by 200,000 merchants. Before that, she was the second engineer at Ledgerline, which was acquired in 2018."
-
-(Company names in these examples are fictional. On a real slide, name the founder's actual employers; verifiable names are part of what makes the bio strong. Never invent or inflate a credential.)
+{{include: shared/coach/team-bio-example.md}}
 
 ---
 
@@ -260,6 +276,8 @@ The why-now slide is essential whenever the founder's pitch is "this is possible
 **Weak:** "We are raising a seed round."
 
 **Strong:** "We are raising $1.5M on a $10M cap. The round buys us 18 months of runway and gets us to $2M ARR with 6 enterprise customers signed."
+
+**Use of funds, when asked for explicitly.** Some investors and programs ask for a use-of-funds breakdown. Give it as money-to-milestones, not a pie chart: three or four lines, each connecting a chunk of the round to the milestone it buys ("$600K: two engineers to ship the enterprise tier by Q2"). If they ask for financials, an 18-to-24-month operating plan (hiring, burn, revenue targets) is credible at early stage. Detailed 5-year projections at pre-seed are a red flag (see SKILL.md); if a form requires them, keep them simple and clearly assumption-driven, and be ready to defend the assumptions rather than the numbers.
 
 ---
 

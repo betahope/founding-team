@@ -2,7 +2,7 @@
 name: cofounder-team-upgrade
 description: "Upgrade the cofounder-team skills to the latest version. Use when the user wants to update or upgrade their cofounder-team skills, get the newest versions of Jack, Maya, Priya, Dan, pitch-deck-coach, startup-application-coach, or humanizer, or asks to run /cofounder-team-upgrade. Triggers include 'upgrade cofounder-team', 'update my cofounder skills', 'pull latest cofounder-team', or running /cofounder-team-upgrade."
 license: MIT
-compatibility: Claude Code only. Requires git and a local clone of the founding-team repo (default ~/.cofounder-team).
+compatibility: Claude Code only. Requires git and a local clone of the cofounder-team repo (default ~/.cofounder-team).
 metadata:
   author: betahope
   bundle-version: "{{var:BUNDLE_VERSION}}"

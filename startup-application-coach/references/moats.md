@@ -30,6 +30,8 @@ If the answers are weak, redirect them to a real defensibility below.
 - **Scale economies.** Cost advantages that grow with size. Mostly a later-stage moat.
 - **Execution velocity.** Shipping and learning faster than anyone else. Real but temporary, and only durable if it feeds a compounding moat.
 - **Distribution.** A proprietary or unusually cheap channel to customers. A hard-to-replicate channel has become a major source of rapid early growth and is a legitimate early advantage.
+- **Counter-positioning.** A business model the incumbent cannot copy without damaging its own core business (pricing that cannibalises their main revenue, a channel that undercuts their sales force). Rare, but powerful when it genuinely holds; the test is "what breaks for them if they follow us?"
+- **Regulatory and compliance position.** Licences, certifications, clearances, and audit status that take real time and money to earn (a medical device clearance, a payments licence, security certifications in a market that demands them). One of the few moats that can be real early, especially in fintech, health, and other regulated spaces. Only claim it if it is held or credibly in progress, not merely planned.
 
 ## Wrap around the workflow (the most useful lens for software)
 
@@ -41,6 +43,14 @@ You cannot build a moat on the newest technology, because it is obsolete tomorro
 2. Identify which real defensibility from the menu actually fits their business. For most early software startups it is switching costs and workflow embedding, and/or distribution, with network effects or brand as the future moat.
 3. Frame the answer as "the moat we are building first, why it compounds, what deepens it at scale." Honesty about sequencing beats a fake day-one moat.
 4. Make it concrete with the framing prompts: What makes you 10x better, not 10%? 80% cheaper or 4x faster? What counterintuitive approach is right? What is genuinely hard to replicate? Finish the sentence: "We are the only company in the world that ______ for our customers."
+
+## Worked example: false moat to honest sequencing
+
+**Weak (false moat):** "Our competitive advantage is our proprietary AI and the data we collect from users. As the first mover in this space, we will have more data than anyone else, which makes our models unbeatable."
+
+**Strong (honest sequencing):** "Our first defensibility is workflow embedding: we sit inside the restaurant's daily prep checklist, and after three months a kitchen has its full inspection history, corrective actions, and staff sign-offs in our system, which makes leaving painful. Our channel is also hard to copy: our pipeline covers 14 county inspection databases and took a year of records requests to build. The compounding moat comes later, if inspectors themselves start accepting our reports. We are not claiming a day-one moat; we are claiming one that deepens with every customer."
+
+(Details in these examples are fictional and illustrative. Build the founder's real answer from their real workflow, channel, and evidence.)
 
 ## Optional: research the customer's chokepoints
 

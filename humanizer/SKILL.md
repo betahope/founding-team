@@ -32,13 +32,16 @@ widest variety of cases." That's why AI writing feels smoothed-over and generici
 the model is producing the statistical average of what a sentence looks like. Humanizing
 means putting specificity, rhythm, and a point of view back in.
 
-## Scope: English only
+## Scope: full pass in English, structural pass in any language
 
-This skill operates on English text only. The 28 patterns target English writing (em dashes, English-specific filler, English signposting, English vague attributions, etc.). The detection logic and the rewrites assume English grammar and idiom.
+The 28 patterns split into two groups:
 
-If a caller (one of the cofounder-team skills or anyone else) passes copy in another language, do not attempt to humanize it. Return immediately with a short note: "This draft is in <language>. The humanizer is English-only, so skipping. The 28 patterns do not transfer to other languages, and inventing replacements risks damaging the copy." The caller already knows to skip in that case, so you are confirming, not blocking.
+- **Lexical patterns** are English-specific: the word lists (7), copula avoidance (8), promotional vocabulary (4), filler phrases (22), and every pattern that names English words or English idiom. They do not transfer. Do not translate them, and do not invent equivalents in other languages.
+- **Structural patterns** are language-independent: rule of three (10), negative parallelism (9), inline-header vertical lists (16), emojis in headings (18), excessive hedging (23), generic positive conclusions (24), signposting (27), fragmented headers (28), mechanical boldface (15), and chatbot leakage (20-21). AI text shows these in any language.
 
-Do not invent non-English patterns. Do not translate the draft into English to humanize and then translate back; that destroys the founder's voice.
+For English text, apply everything.
+
+For text in any other language, do a **structural-only pass**: fix the structure (cut the forced triplet, unstack the hedges, drop the signposting, flatten the label-colon-restatement list) while touching the wording as lightly as possible. Do not rewrite idiom in a language where you cannot hear the register. When you return the result, say in one short line that this was a structural-only pass because the lexical patterns are English-specific, and that the writer's own review is the safeguard for wording. Never translate the draft into English to humanize and then translate back; that destroys the writer's voice.
 
 ## How this skill is organized
 
@@ -64,6 +67,22 @@ it would help to see the full workflow applied to an essay.
    thought; don't surface the audit as prose in your output unless the user explicitly
    asked you to show your work.
 5. **Return** the rewritten text, sized to the input (see next section).
+
+**Never invent facts.** Rewriting toward specificity must not add facts, numbers,
+names, dates, or citations that are not in the source text. If the rewrite would be
+stronger with a specific the source does not contain, use a bracketed placeholder
+("[founded year?]") or ask for it. Some before/after examples in
+`references/patterns.md` show invented specifics for illustration; they demonstrate
+what specificity looks like, not licence to fabricate.
+
+**Judge density, not presence.** Most of the patterns below are density tells, not
+banned constructs. Humans use em dashes, triplets, hedges, and bold text too; what
+marks AI writing is how often, and how uniformly. Count roughly before rewriting:
+one em dash in a long piece is normal, three in a paragraph is a tell. One "crucial"
+is a word, five is a pattern. The exceptions worth fixing even once: fabricated or
+vague attributions (pattern 5), chatbot leakage (patterns 20-21). When in doubt,
+judge the count against the length of the piece and the register a human would use
+in the same context.
 
 ## Right-sizing your output
 
@@ -93,7 +112,7 @@ Use this as a scanning checklist. Full details in `references/patterns.md`.
 6. Formulaic "Challenges and Future Prospects" sections
 
 **Language and grammar** (how AI phrases things):
-7. High-frequency AI vocabulary: delve, tapestry, crucial, underscore, landscape
+7. High-frequency AI vocabulary: delve, tapestry, crucial, underscore, leverage, streamline
 8. Copula avoidance: "serves as" / "stands as" instead of "is"
 9. Negative parallelism ("not just X, it's Y") and tailing negations ("no guessing")
 10. Rule of three: forced triplets
@@ -120,7 +139,7 @@ Use this as a scanning checklist. Full details in `references/patterns.md`.
 24. Generic positive conclusions: "the future looks bright", "exciting times lie ahead"
 25. Too-perfect compound-modifier hyphenation: every "cross-functional", "data-driven",
     "real-time" hyphenated identically across a document
-26. Persuasive authority tropes: "the real question is", "at its core"
+26. Persuasive authority tropes: "the real question is", "at its core", "here's the thing"
 27. Signposting: "let's dive in", "here's what you need to know"
 28. Fragmented headers: heading + one-line restatement + real content
 
@@ -161,6 +180,14 @@ obvious as slop. Good writing has a human behind it.
 > while the humans presumably slept. Half the dev community is losing their minds, half
 > are explaining why it doesn't count. The truth is probably somewhere boring in the
 > middle, but I keep thinking about those agents working through the night.
+
+### One voice among many
+
+The examples above show a voice, not the voice. If every piece you humanize comes out
+sounding like the same casual, first-person tech blogger, that sameness is its own
+tell. Vary rhythm, opinion density, and register from piece to piece, guided by the
+writer and the audience. Two different founders' landing pages should not read like
+the same person wrote them.
 
 ### Calibrating voice by context
 

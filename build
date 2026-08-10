@@ -134,17 +134,33 @@ render() {
   done < "$file"
 }
 
-# Copy everything in a skill folder EXCEPT the SKILL.md (which we render) and the
-# build-only helper files. References and any other bundled assets ship as-is.
+# Ship everything in a skill folder EXCEPT the SKILL.md (which is rendered
+# separately). Every other .md file (references and any nested notes) is rendered
+# through the same directive pipeline, so includes and flavor blocks work there
+# too. A .md file with no directives renders byte-identical to a plain copy.
+# Non-markdown assets are copied as-is.
 copy_extras() {
-  local src="$1" out="$2" entry name
+  local src="$1" out="$2" flavor="$3" entry name
   for entry in "$src"/* "$src"/.[!.]*; do
     [ -e "$entry" ] || continue
     name="$(basename "$entry")"
     case "$name" in
       SKILL.md) continue ;;   # rendered separately
-      *) cp -R "$entry" "$out/" ;;
     esac
+    if [ -d "$entry" ]; then
+      mkdir -p "$out/$name"
+      copy_extras "$entry" "$out/$name" "$flavor"
+    elif [[ "$name" == *.md ]]; then
+      SKIP_STACK=()
+      SP=0
+      render "$entry" "$flavor" > "$out/$name"
+      if [ "$SP" -ne 0 ]; then
+        echo "build: unclosed {{FLAVOR}} block in $entry" >&2
+        exit 1
+      fi
+    else
+      cp -R "$entry" "$out/$name"
+    fi
   done
 }
 
@@ -174,7 +190,7 @@ for src in "$REPO_DIR"/*/; do
       echo "build: unclosed {{FLAVOR}} block in $skill/SKILL.md" >&2
       exit 1
     fi
-    copy_extras "$src" "$out"
+    copy_extras "$src" "$out" "$flavor"
   done
 
   echo "  built $skill"

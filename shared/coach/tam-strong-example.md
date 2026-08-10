@@ -1,0 +1,1 @@
+**Strong:** "We charge a $1,200 annual subscription. With 749,404 restaurants in the US, that is roughly $899M a year in the US. With 1.5 million restaurants in Europe, roughly $1.8B a year in Europe."

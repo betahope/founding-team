@@ -16,7 +16,7 @@ Programs watch this video to answer questions like: Do these founders come acros
 
 ### The gold standard instructions (from YC)
 
-YC's application instructions for the founder video are the clearest in the industry. Use them as a default for any founder video unless the specific program says otherwise.
+YC's application instructions for the founder video are the clearest in the industry. Use them as a default for any founder video unless the specific program says otherwise. The bullets below are YC's wording at the time of writing (mid-2026); if the live application says something different, trust the live application.
 
 From YC's application:
 
@@ -30,6 +30,8 @@ From YC's application:
 
 **Keep it to the founders.** No b-roll, no product footage, no background music, no graphics. Just the founders on camera, talking.
 
+**Real founders on camera, always.** No AI avatars, no synthetic voiceover, no AI-generated video. The whole point of this video is to let the program see the actual humans communicate, and reviewers now actively screen for synthetic video. An AI-generated founder video reads as evasion and can be disqualifying on its own.
+
 **Do not script it.** This is the single biggest mistake. A scripted founder video sounds robotic, and programs can tell instantly. Bullet points are enough. Talk through them like you are explaining the company to a friend at a coffee shop.
 
 **All founders on camera.** If you have co-founders, they should all appear. If you cannot be in the same room, use a screen-recorded video call. Do not submit a video with only one founder if there are multiple on the team.
@@ -41,6 +43,7 @@ From YC's application:
 ### Common mistakes to avoid
 
 - Reading from a script (the biggest one)
+- Using an AI avatar or synthetic voice instead of the real founders
 - Over-producing the video with music, text overlays, or cuts
 - Making it longer than requested
 - Only showing one founder when there are multiple
@@ -104,6 +107,7 @@ The viewer now understands who the product is for, what the problem is, and why 
 ### Common mistakes to avoid
 
 - Doing a feature tour instead of covering use cases
+- Using an AI-generated voiceover; your real voice builds more trust
 - Over-producing with background music, animations, or a professional voiceover
 - Explaining every screen in detail (the viewer does not need a full product manual)
 - Using jargon or internal product names that a reader would not understand
