@@ -71,7 +71,7 @@ Each skill is a folder with a `SKILL.md` inside. Once installed, trigger them by
 - **team** — Convenes the co-founders in one reply for questions that span domains and for big decisions. Each voice named, one recommendation at the end.
 - **pitch-deck-coach** — Helps you plan, critique, and rewrite pitch decks for investors, accelerators, demo days, customers, or partners.
 - **startup-application-coach** — Helps you write stronger applications to accelerators, incubators, and pre-accelerators (YC, Techstars, EF, Antler, and others).
-- **humanizer** — Strips AI tells out of any user-facing copy. The other skills call this one before showing you a draft.
+- **humanizer** — Strips AI tells out of any user-facing copy. The other skills call this one before showing you a draft. Its pattern catalog is [blader's humanizer](https://github.com/blader/humanizer), vendored here unchanged and re-synced automatically, so upgrading the bundle also gets you the latest patterns.
 - **cofounder-team-upgrade** — The upgrade skill itself. Runs the update workflow when you ask.
 
 ## Built on an open standard
@@ -142,7 +142,7 @@ Built by Charles Hope at Your Startup Advisor. The co-founder personas, the two 
 
 **`startup-application-coach`** — practical application-writing principles from Charles Hope, plus published guidance from Paul Graham, "How to Apply to Y Combinator"; Dalton Caldwell, "How to Apply and Succeed at YC"; a16z Speedrun, "What We Look for in Applications"; and Andres Barreto (Techstars), "Techstars Application Guide." The bottom-up TAM, competitive-advantage / moat, and Techstars-specific material is adapted from Andres Barreto's guide and his open-source skill at [github.com/andresbarreto-techstars/techstars-application-coach-skill](https://github.com/andresbarreto-techstars/techstars-application-coach-skill).
 
-**`humanizer`** — created and maintained by blader, published at [github.com/blader/humanizer](https://github.com/blader/humanizer) under the MIT License, and bundled here under those terms so users do not need to install it separately. Its underlying source is Wikipedia's "Signs of AI writing" guide, maintained by WikiProject AI Cleanup.
+**`humanizer`** — created and maintained by blader, published at [github.com/blader/humanizer](https://github.com/blader/humanizer) under the MIT License, and bundled here under those terms so users do not need to install it separately. blader's pattern catalog ships unmodified as `humanizer/references/upstream-patterns.md`; our `SKILL.md` adds only the workflow, output sizing, non-English rule, and voice guidance on top. A weekly job re-syncs the catalog whenever blader publishes a new version. Its underlying source is Wikipedia's "Signs of AI writing" guide, maintained by WikiProject AI Cleanup.
 
 ## License
 

@@ -5,7 +5,7 @@ description: |
   Use proactively whenever creating or editing any user-facing copy: UI strings,
   button labels, landing page sections, marketing copy, emails, blog posts, product
   descriptions, documentation prose, in-app messages, error states, empty states.
-  Detects and fixes 28 AI writing tells, including em dash overuse, promotional
+  Detects and fixes AI writing tells, including em dash overuse, promotional
   language ("nestled", "vibrant"), superficial -ing analyses, negative parallelism
   ("not just X, it's Y"), copula avoidance ("serves as" instead of "is"), rule of
   three, high-frequency AI vocabulary, vague attributions, signposting ("let's dive
@@ -15,7 +15,8 @@ description: |
 license: MIT
 metadata:
   author: betahope
-  version: "3.0.0"
+  version: "4.0.0"
+  upstream: "blader/humanizer"
   bundle-version: "{{var:BUNDLE_VERSION}}"
 allowed-tools: Read Write Edit Grep Glob AskUserQuestion
 ---
@@ -32,35 +33,61 @@ widest variety of cases." That's why AI writing feels smoothed-over and generici
 the model is producing the statistical average of what a sentence looks like. Humanizing
 means putting specificity, rhythm, and a point of view back in.
 
+## How this skill is organized
+
+The pattern catalog is not ours. It comes from
+[blader/humanizer](https://github.com/blader/humanizer), MIT licensed, and is vendored
+here unchanged so it stays current without anyone re-typing it.
+
+- **This file**: the workflow, the language rule, output sizing, and the voice guidance.
+- `references/upstream-patterns.md`: the full pattern catalog, straight from upstream.
+  Every pattern has a words-to-watch list, the underlying problem, a before/after
+  example, and notes on what *not* to flag.
+- `references/voice-calibration.md`: how to match a user's writing sample.
+- `references/example.md`: a long-form before/after at full-essay scale.
+
+**Read `references/upstream-patterns.md` on every real humanizing pass.** It is the
+authority on which patterns exist and how to fix each one. This file is the authority
+on workflow, output length, language scope, and voice. Where the two disagree, this
+file wins.
+
+The patterns group into five families: content (what AI over-claims), language and
+grammar (how it phrases things), style (surface formatting tells), chatbot leakage
+(register left over from the assistant), and filler and hedging (padding). Deliberately
+no numbered index here: upstream adds and renumbers patterns, and a second list would
+drift out of sync with the first.
+
 ## Scope: full pass in English, structural pass in any language
 
-The 28 patterns split into two groups:
+The patterns split into two groups:
 
-- **Lexical patterns** are English-specific: the word lists (7), copula avoidance (8), promotional vocabulary (4), filler phrases (22), and every pattern that names English words or English idiom. They do not transfer. Do not translate them, and do not invent equivalents in other languages.
-- **Structural patterns** are language-independent: rule of three (10), negative parallelism (9), inline-header vertical lists (16), emojis in headings (18), excessive hedging (23), generic positive conclusions (24), signposting (27), fragmented headers (28), mechanical boldface (15), and chatbot leakage (20-21). AI text shows these in any language.
+- **Lexical patterns** are English-specific: the words-to-watch lists, copula avoidance
+  ("serves as" for "is"), promotional vocabulary, filler phrases, and every pattern that
+  names English words or English idiom. They do not transfer. Do not translate them, and
+  do not invent equivalents in other languages.
+- **Structural patterns** are language-independent: forced triplets, negative
+  parallelism, bold-label lists, emojis in headings, stacked hedges, generic upbeat
+  endings, signposting, headings restated in the first line, mechanical boldface, and
+  chatbot leakage. AI text shows these in any language.
 
 For English text, apply everything.
 
-For text in any other language, do a **structural-only pass**: fix the structure (cut the forced triplet, unstack the hedges, drop the signposting, flatten the label-colon-restatement list) while touching the wording as lightly as possible. Do not rewrite idiom in a language where you cannot hear the register. When you return the result, say in one short line that this was a structural-only pass because the lexical patterns are English-specific, and that the writer's own review is the safeguard for wording. Never translate the draft into English to humanize and then translate back; that destroys the writer's voice.
-
-## How this skill is organized
-
-- **This file**: the workflow, the pattern index, and the "add voice" principles
-- `references/patterns.md`: full catalog of the 28 patterns with before/after examples
-- `references/voice-calibration.md`: how to match a user's writing sample
-- `references/example.md`: long-form before/after, full-essay scale
-
-Read `patterns.md` when you want specifics on any pattern during a scan. Read
-`voice-calibration.md` when the user provides a writing sample. Read `example.md` if
-it would help to see the full workflow applied to an essay.
+For text in any other language, do a **structural-only pass**: fix the structure (cut the
+forced triplet, unstack the hedges, drop the signposting, flatten the
+label-colon-restatement list) while touching the wording as lightly as possible. Do not
+rewrite idiom in a language where you cannot hear the register. When you return the
+result, say in one short line that this was a structural-only pass because the lexical
+patterns are English-specific, and that the writer's own review is the safeguard for
+wording. Never translate the draft into English to humanize and then translate back;
+that destroys the writer's voice.
 
 ## Workflow
 
 1. **Read** the input carefully. Note the intended register (casual, formal, technical)
    and the length category (snippet, paragraph, essay). These drive how hard you lean on
    each step.
-2. **Scan** for the patterns in the index below. Load `references/patterns.md` for
-   specifics on any category you aren't sure about.
+2. **Scan** against `references/upstream-patterns.md`. Check the "what not to flag"
+   section there too, so you don't strip out real writing.
 3. **Rewrite** to remove the patterns while preserving meaning, register, and voice.
 4. **Self-audit.** Re-read your draft and silently ask what still reads as AI-generated.
    Note any remaining tells internally, then revise to fix them. Do this as internal
@@ -71,18 +98,24 @@ it would help to see the full workflow applied to an essay.
 **Never invent facts.** Rewriting toward specificity must not add facts, numbers,
 names, dates, or citations that are not in the source text. If the rewrite would be
 stronger with a specific the source does not contain, use a bracketed placeholder
-("[founded year?]") or ask for it. Some before/after examples in
-`references/patterns.md` show invented specifics for illustration; they demonstrate
-what specificity looks like, not licence to fabricate.
+("[founded year?]") or ask for it. Fiction is the exception: invented detail is the job
+there.
 
-**Judge density, not presence.** Most of the patterns below are density tells, not
-banned constructs. Humans use em dashes, triplets, hedges, and bold text too; what
-marks AI writing is how often, and how uniformly. Count roughly before rewriting:
-one em dash in a long piece is normal, three in a paragraph is a tell. One "crucial"
-is a word, five is a pattern. The exceptions worth fixing even once: fabricated or
-vague attributions (pattern 5), chatbot leakage (patterns 20-21). When in doubt,
-judge the count against the length of the piece and the register a human would use
-in the same context.
+**Judge density, not presence, with three exceptions.** Most of the patterns are density
+tells, not banned constructs. Humans use triplets, hedges, and bold text too; what marks
+AI writing is how often, and how uniformly. One "crucial" is a word, five is a pattern.
+When in doubt, judge the count against the length of the piece and the register a human
+would use in the same context.
+
+Three things are worth fixing even once:
+
+- **Em and en dashes.** The catalog's rule is absolute and this bundle follows it: the
+  final text contains no em dashes and no en dashes. Replace each one with a comma, a
+  period, a colon, or parentheses, or rewrite the sentence. Check for spaced dashes and
+  double hyphens too. The only exception is a writer's own sample that uses them, in
+  which case match the sample's rate.
+- **Vague or fabricated attributions**, such as "experts believe" with no named source.
+- **Chatbot leakage**, such as "I hope this helps" or "Great question!".
 
 ## Right-sizing your output
 
@@ -98,50 +131,6 @@ over-scaffolded output for short copy is its own tell.
   rewrite, then a brief bulleted note of the pattern categories you touched. Include
   the full "draft → audit → final" three-stage output only if the user asked to see
   your work.
-
-## Pattern index
-
-Use this as a scanning checklist. Full details in `references/patterns.md`.
-
-**Content** (what AI over-claims):
-1. Significance inflation: "testament", "pivotal moment", "evolving landscape"
-2. Notability puffery: name-dropping outlets, follower counts
-3. Superficial -ing analyses: "highlighting", "reflecting", "contributing to"
-4. Promotional language: "nestled", "vibrant", "breathtaking", "must-visit"
-5. Vague attributions: "experts argue", "industry observers have noted"
-6. Formulaic "Challenges and Future Prospects" sections
-
-**Language and grammar** (how AI phrases things):
-7. High-frequency AI vocabulary: delve, tapestry, crucial, underscore, leverage, streamline
-8. Copula avoidance: "serves as" / "stands as" instead of "is"
-9. Negative parallelism ("not just X, it's Y") and tailing negations ("no guessing")
-10. Rule of three: forced triplets
-11. Elegant variation: needless synonym cycling for the same subject
-12. False ranges: "from X to Y" where X and Y aren't on a scale
-13. Passive voice and subjectless fragments: "No configuration file needed"
-
-**Style** (surface formatting tells):
-14. Em dash overuse
-15. Mechanical boldface emphasis
-16. Inline-header vertical lists (bold label + colon + restatement)
-17. Title Case Headings
-18. Emojis in headings and bullets
-19. Curly quotation marks (“ ” vs " ")
-
-**Communication** (leaked chatbot register):
-20. Collaborative artifacts and sycophancy: "Here is...", "I hope this helps",
-    "Great question!", "You're absolutely right"
-21. Knowledge-cutoff disclaimers: "while specific details are limited"
-
-**Filler and hedging** (padding):
-22. Filler phrases: "in order to", "at this point in time"
-23. Excessive hedging: "could potentially possibly"
-24. Generic positive conclusions: "the future looks bright", "exciting times lie ahead"
-25. Too-perfect compound-modifier hyphenation: every "cross-functional", "data-driven",
-    "real-time" hyphenated identically across a document
-26. Persuasive authority tropes: "the real question is", "at its core", "here's the thing"
-27. Signposting: "let's dive in", "here's what you need to know"
-28. Fragmented headers: heading + one-line restatement + real content
 
 ## Personality and soul
 
@@ -214,6 +203,8 @@ backstop, not a replacement for a real humanizer pass.
 
 ---
 
-Source: [Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing),
-maintained by WikiProject AI Cleanup. Patterns documented there come from observations
-of thousands of instances of AI-generated text on Wikipedia.
+Pattern catalog by [blader](https://github.com/blader/humanizer), MIT licensed, vendored
+here unchanged. Its source is
+[Wikipedia:Signs of AI writing](https://en.wikipedia.org/wiki/Wikipedia:Signs_of_AI_writing),
+maintained by WikiProject AI Cleanup, drawn from observations of thousands of instances
+of AI-generated text on Wikipedia.

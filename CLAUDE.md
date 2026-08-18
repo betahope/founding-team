@@ -25,7 +25,7 @@ Each top-level directory containing a `SKILL.md` is a skill:
 - `jack`, `maya`, `priya`, `dan` — the four co-founder personas
 - `team` — convenes the personas in one multi-voice reply for cross-domain questions and big decisions
 - `pitch-deck-coach`, `startup-application-coach` — coaching skills
-- `humanizer` — called by the other skills before they return user-facing copy
+- `humanizer` — called by the other skills before they return user-facing copy. Its pattern catalog is vendored from upstream, not written here (see "The vendored humanizer catalog" below)
 - `cofounder-team-upgrade` — runs the upgrade workflow
 
 Supporting pieces:
@@ -95,7 +95,7 @@ The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: person
 
 ## Style rules baked into the skills themselves
 
-When editing skill prose, match the existing voice. In particular: **no em dashes** (this is stated explicitly in the persona skills' "How you talk" sections, and `humanizer` flags em-dash overuse as pattern #14). Use commas, parentheses, or two sentences instead.
+When editing skill prose, match the existing voice. In particular: **no em dashes** (this is stated explicitly in the persona skills' "How you talk" sections, and `humanizer` flags em-dash overuse). Use commas, parentheses, or two sentences instead.
 
 ## Versioning and CHANGELOG
 
@@ -110,6 +110,34 @@ What the version numbers mean here:
 Every change goes into the `[Unreleased]` section of `CHANGELOG.md` as it ships. When cutting a release: rename `[Unreleased]` to the new version and date (`[X.Y.Z] - YYYY-MM-DD`), insert a fresh empty `[Unreleased]` at the top, bump `VERSION`, commit, then `git tag vX.Y.Z` and `git push --tags`.
 
 The `humanizer` skill keeps its own version, now under `metadata.version` in frontmatter, because it predates the bundle. That number is informational; the bundle version is authoritative for upgrade decisions. Do not propagate per-skill versions to the other SKILL.md files.
+
+## The vendored humanizer catalog
+
+The humanizer's pattern catalog is not ours. It belongs to blader
+(https://github.com/blader/humanizer, MIT) and is vendored, unmodified, as
+`humanizer/references/upstream-patterns.md`. We used to keep a hand-written copy that
+slowly fell behind upstream; this replaces it.
+
+Rules:
+
+- **Never hand-edit `humanizer/references/upstream-patterns.md`.** It is generated. Any
+  edit is lost on the next sync.
+- **`humanizer/SKILL.md` is our layer only**: workflow, output sizing, the non-English
+  rule, and the voice guidance. It must not restate the pattern list. Upstream renumbers
+  and renames patterns between releases, so any second list here would drift, and so
+  would any prose that cites a pattern by number. Do not reintroduce pattern numbers into
+  `SKILL.md`, the shared snippets, or the hook comments.
+- **`sync-humanizer`** (repo root, plain bash) fetches upstream's latest tagged release
+  and rewrites the vendored file. `bash ./sync-humanizer --check` reports without writing.
+  It refuses to vendor anything containing `{{`, since the build would treat that as a
+  template directive.
+- **`.github/workflows/sync-humanizer.yml`** runs the sync weekly, rebuilds, validates
+  against the Agent Skills spec, and opens a pull request when upstream has moved. Nothing
+  merges automatically. The repo needs "Allow GitHub Actions to create and approve pull
+  requests" enabled under Settings -> Actions -> General.
+- Reviewing a sync PR means checking that no renumbering broke prose elsewhere, deciding
+  whether the slop-check hook's word list needs additions, and adding a `CHANGELOG.md`
+  entry before the next release.
 
 ## The upgrade skill
 

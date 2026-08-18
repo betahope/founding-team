@@ -1,0 +1,76 @@
+name: Sync humanizer patterns from upstream
+
+# The humanizer's pattern catalog belongs to blader
+# (https://github.com/blader/humanizer, MIT). We vendor it rather than
+# maintaining a copy that drifts.
+#
+# This job runs `sync-humanizer` once a week. If blader has published a new
+# version, it opens a pull request with the updated catalog. Nothing lands
+# automatically: a human reviews and merges.
+#
+# Also runnable on demand from the Actions tab (Run workflow).
+#
+# Repo setting required once: Settings -> Actions -> General -> Workflow
+# permissions -> tick "Allow GitHub Actions to create and approve pull
+# requests". Without it, this job cannot open the PR.
+
+on:
+  schedule:
+    # Mondays at 09:00 UTC.
+    - cron: '0 9 * * 1'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v6
+
+      - name: Pull the latest catalog from upstream
+        id: sync
+        run: bash ./sync-humanizer
+
+      - name: Rebuild to confirm the bundle still compiles
+        if: steps.sync.outputs.updated == 'true'
+        run: bash ./build
+
+      - name: Validate every skill against the Agent Skills spec
+        if: steps.sync.outputs.updated == 'true'
+        run: |
+          for dir in dist/portable/*/ dist/claude-code/*/; do
+            npx -y skills-ref validate "$dir"
+          done
+
+      - name: Open a pull request
+        if: steps.sync.outputs.updated == 'true'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: sync/humanizer-upstream
+          delete-branch: true
+          add-paths: humanizer/references/upstream-patterns.md
+          commit-message: "Sync humanizer catalog with upstream ${{ steps.sync.outputs.version }}"
+          title: "Sync humanizer catalog with upstream ${{ steps.sync.outputs.version }}"
+          body: |
+            blader has published humanizer **${{ steps.sync.outputs.version }}**, and this
+            pull request pulls the new pattern catalog into the bundle.
+
+            Only `humanizer/references/upstream-patterns.md` changes. That file is vendored
+            unmodified from [blader/humanizer](https://github.com/blader/humanizer) and is
+            never hand-edited.
+
+            This job already rebuilt the bundle and validated every skill against the Agent
+            Skills spec, so the mechanics are known good. What still needs a human eye:
+
+            - Does any pattern renumbering or renaming break something that names patterns
+              in prose? Check `humanizer/SKILL.md`, `shared/persona/humanizer-steps.md`,
+              `shared/persona/humanizer-non-english.md`, and `shared/coach/humanizer-language.md`.
+            - Do the new or changed patterns need a word added to the slop-check hook's
+              list in `hooks/humanizer-slop-check/slop-check.py`?
+            - Add a `CHANGELOG.md` entry before cutting the next release, so users see it.
+
+            Opened automatically by `.github/workflows/sync-humanizer.yml`.

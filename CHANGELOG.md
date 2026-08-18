@@ -14,6 +14,26 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.14.0] - 2026-08-18
+
+The humanizer stops being a fork. Its pattern catalog now comes straight from the upstream project and re-syncs itself, so upgrading the bundle also gets you the newest patterns.
+
+### Added
+
+- **Vendored upstream humanizer catalog.** `humanizer/references/upstream-patterns.md` is [blader's humanizer](https://github.com/blader/humanizer) `SKILL.md`, MIT licensed, copied in unchanged. It replaces the hand-written 28-pattern catalog we used to maintain, which had fallen behind upstream. Users get **35 patterns instead of 28**, plus upstream's "what not to flag" guidance, which the old catalog lacked. New patterns cover repeated sentence openings, writing about the previous version, forced punchlines, formulaic sayings, fake-candid openings, answering objections nobody raised, and rejecting fake alternatives.
+- **`sync-humanizer`.** A plain-bash script at the repo root that pulls upstream's latest tagged release and rewrites the vendored file. `bash ./sync-humanizer --check` reports without writing. It refuses to vendor anything containing a build directive.
+- **Weekly upstream sync workflow.** `.github/workflows/sync-humanizer.yml` runs the sync every Monday, rebuilds, validates every skill against the Agent Skills spec, and opens a pull request when upstream has published a new version. Nothing merges on its own.
+
+### Changed
+
+- **`humanizer/SKILL.md` is now a thin layer, not a fork.** It keeps what is ours (the workflow, output sizing, the English/non-English scope rule, the voice and personality guidance) and hands the pattern list to the vendored catalog. Bumped to 4.0.0 in its own informational version.
+- **Em dashes are now an absolute rule, not a density judgment.** The old fork said one em dash in a long piece was fine. Upstream's catalog bans them outright unless the writer's own sample uses them, and this repo's house style bans them too. `humanizer/SKILL.md` now follows the catalog, and names em/en dashes, vague attributions, and chatbot leakage as the three tells worth fixing even once.
+- **No pattern numbers in bundle prose.** `SKILL.md`, `shared/persona/humanizer-steps.md`, `CLAUDE.md`, and the slop-check hook's comments no longer cite patterns by number, since upstream renumbers them between releases.
+
+### Removed
+
+- **`humanizer/references/patterns.md`.** Superseded by the vendored upstream catalog. Nothing is lost: every pattern it covered is in the new file, alongside seven more.
+
 ## [0.13.1] - 2026-08-10
 
 ### Changed

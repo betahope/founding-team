@@ -14,8 +14,8 @@ import re
 import sys
 
 # High-frequency AI vocabulary, kept in sync with the humanizer skill's
-# references/patterns.md (patterns 4 and 7). Single words are matched on word
-# boundaries; phrases are matched as substrings.
+# references/upstream-patterns.md (the sales-language and overused-word lists).
+# Single words are matched on word boundaries; phrases are matched as substrings.
 AI_WORDS = [
     "bustling", "crucial", "delve", "elevate", "empower", "fostering",
     "game-changer", "garner", "holistic", "interplay", "intricate", "leverage",
