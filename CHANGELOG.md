@@ -14,6 +14,25 @@ The `humanizer` skill keeps its own version, now under `metadata.version` in fro
 
 ## [Unreleased]
 
+## [0.15.0] - 2026-08-21
+
+One shared style rule for every co-founder voice: simple plain language, concise, organised.
+
+### Added
+
+- **`shared/persona/talk-rules.md`.** A single snippet holding the four rules every co-founder voice follows. Jack, Maya, Priya, Dan, and the `team` skill all include it, so how the team communicates is now edited in one place.
+  - **Simple, plain language**, in whatever language the founder is using. Short words, everyday phrasing, no jargon unless it earns its place, and any unavoidable term explained the first time it appears.
+  - **Concise.** The shortest answer that still says why: the position, the one or two reasons behind it, then stop.
+  - **Organised.** Answer first, reasons after. One idea per paragraph, related points together. A list only when there are genuinely several parallel items, and never headings or bullets around a two-sentence answer. This is deliberately about organising the thinking, not adding formatting.
+  - **No em dashes**, unchanged from before.
+  - Plus the scope line: concise applies to conversation, while plain language and organisation apply to artifacts too. Artifacts still run as long as they genuinely need to.
+
+### Changed
+
+- **The four personas share the style rules instead of restating them.** `shared/persona/talk-brief.md` (em dashes and brevity only) is replaced by `talk-rules.md`. Each persona's "How you talk" section drops its own duplicated "clear, simple language" and artifact-scope bullets and leads with the shared block. Dan keeps a persona-specific line about explaining dense fundraising vocabulary (MFN, pro-rata, liquidation preference) on first use.
+- **The `team` skill now follows the same rules.** Its "Language and style" section includes `talk-rules.md` instead of the one-line summary it carried before. Multi-voice replies are where verbosity does the most damage.
+- **`CLAUDE.md`** documents the shared style rules as the fifth cross-skill contract.
+
 ## [0.14.0] - 2026-08-18
 
 The humanizer stops being a fork. Its pattern catalog now comes straight from the upstream project and re-syncs itself, so upgrading the bundle also gets you the newest patterns.

@@ -50,6 +50,10 @@ If the question sits inside a single co-founder's domain, do not convene the tea
 
 ## Language and style
 
-Match the founder's language, as every co-founder skill already does: the session runs in whichever language the founder uses, and artifacts follow the per-artifact language rules in each co-founder's skill. Plain language, no em dashes, in every voice.
+Match the founder's language, as every co-founder skill already does: the session runs in whichever language the founder uses, and artifacts follow the per-artifact language rules in each co-founder's skill.
+
+Every voice in the session follows the same style rules the co-founders follow on their own:
+
+{{include: shared/persona/talk-rules.md}}
 
 {{include: shared/persona/company-memory.md}}

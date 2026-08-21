@@ -31,7 +31,7 @@ Each top-level directory containing a `SKILL.md` is a skill:
 Supporting pieces:
 
 - `build` — bash script that compiles source skills into `dist/claude-code/` and `dist/portable/`.
-- `shared/` — snippets included by more than one skill (for example `shared/persona/` holds the co-founder intro, humanizer steps, and non-English rule the four personas share). Not a skill.
+- `shared/` — snippets included by more than one skill (for example `shared/persona/` holds the co-founder intro, the shared style rules, the humanizer steps, and the non-English rule). Not a skill.
 - `hooks/` — optional, opt-in Claude Code hooks (currently `humanizer-slop-check`). Not a skill, not installed by `setup`, absent on Claude.ai.
 - `dist/` — build output. Git-ignored. Never edit by hand; rebuild instead.
 
@@ -84,18 +84,19 @@ After any change to a source skill or a shared snippet, run `bash ./build` and c
 
 ## The cross-skill contract
 
-These skills are designed as a team that knows its own lanes. When editing any persona skill, keep four contracts intact:
+These skills are designed as a team that knows its own lanes. When editing any persona skill, keep five contracts intact:
 
 1. **Lane boundaries are mutual.** If `jack/SKILL.md` says "visual content sits with Priya" then `priya/SKILL.md` must own that lane. Boundaries described in one skill's "Boundaries" section should be reflected in the other skill's domain. Changing a lane in one place is a multi-file edit.
 2. **`humanizer` is called by the others.** Jack, Maya, Priya, Dan, and the two coaches all instruct themselves to run drafts through the `humanizer` skill before returning user-facing copy. If you change humanizer's name, location, or invocation pattern, update every caller. The four personas now share the humanizer workflow steps and the non-English rule from `shared/persona/humanizer-steps.md` and `shared/persona/humanizer-non-english.md`, so editing those two snippets updates all four personas at once. The two coaches keep their own inline copies (their structure differs), so they still need separate edits.
 3. **Language follows the user.** All persona and coach skills detect the founder's language from their messages and respond in that language. Generated artifacts (pitch decks, application answers, content drafts, financial model narratives) are produced in the same language unless the founder explicitly asks for a different language for a specific artifact ("make the deck in English"). Per-artifact overrides do not change the conversational language. Persona names (Jack, Maya, Priya, Dan) stay as-is. `humanizer` runs in full on English drafts; on non-English drafts it does a structural-only pass (its lexical patterns are English-specific) and the caller notes that briefly. If you add a new persona or coach, it must follow this contract too.
-4. **Company memory is shared (Claude Code only).** The personas, the coaches, and the `team` skill all include `shared/persona/company-memory.md`, which defines one shared memory file (`./.cofounder-team/company.md` in the founder's project) holding the company basics. It is wrapped in a `{{FLAVOR:claude-code}}` block, so the portable build never sees it. A new skill that advises the company should include the same snippet.
+4. **Style rules are shared.** Jack, Maya, Priya, Dan, and the `team` skill all include `shared/persona/talk-rules.md`, which holds the four rules every co-founder voice follows: simple plain language (in whatever language the founder is using), concise, organised, and no em dashes. It also draws the line on scope: conciseness applies to conversation, while plain language and organisation apply to artifacts too. Edit that one file to change how every co-founder communicates. Do not restate these rules inside a persona; add only what is specific to that persona (Dan's fundraising vocabulary note is the example).
+5. **Company memory is shared (Claude Code only).** The personas, the coaches, and the `team` skill all include `shared/persona/company-memory.md`, which defines one shared memory file (`./.cofounder-team/company.md` in the founder's project) holding the company basics. It is wrapped in a `{{FLAVOR:claude-code}}` block, so the portable build never sees it. A new skill that advises the company should include the same snippet.
 
-The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: persona intro → "How you think" → "Your domain" → "Boundaries" (which names the other co-founders by full name and explicitly hands work off) → "Companion skills" → "How you talk" → "Generating copy: mandatory humanizer pass" → "Context". Preserve this shape when editing — it's how the hand-offs stay reliable. A few of these blocks are now `{{include}}` directives resolved at build time (the co-founder intro, the humanizer steps, the non-English rule); the rendered shape is unchanged.
+The personas (Jack, Maya, Priya, Dan) follow a consistent SKILL.md shape: persona intro → "How you think" → "Your domain" → "Boundaries" (which names the other co-founders by full name and explicitly hands work off) → "Companion skills" → "How you talk" → "Generating copy: mandatory humanizer pass" → "Context". Preserve this shape when editing — it's how the hand-offs stay reliable. A few of these blocks are now `{{include}}` directives resolved at build time (the co-founder intro, the style rules, the humanizer steps, the non-English rule); the rendered shape is unchanged.
 
 ## Style rules baked into the skills themselves
 
-When editing skill prose, match the existing voice. In particular: **no em dashes** (this is stated explicitly in the persona skills' "How you talk" sections, and `humanizer` flags em-dash overuse). Use commas, parentheses, or two sentences instead.
+When editing skill prose, match the existing voice. In particular: **no em dashes** (this is stated explicitly in `shared/persona/talk-rules.md`, which every persona's "How you talk" section includes, and `humanizer` flags em dashes). Use commas, parentheses, or two sentences instead.
 
 ## Versioning and CHANGELOG
 
